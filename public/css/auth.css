@@ -1,0 +1,149 @@
+/* =============== GLOBAL BACKGROUND =============== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(to bottom, #FFF4EC, #FFD8C4);
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+/* =============== NAVBAR =============== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background: #D4D96F;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.navbar .logo-text {
+    font-size: 22px;
+    font-weight: 700;
+    color: #4A5D3F;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #4A5D3F;
+    font-weight: 600;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.nav-login, .nav-signup {
+    padding: 6px 16px;
+    border-radius: 8px;
+    border: 2px solid #4A5D3F;
+    background: white;
+}
+
+.nav-login:hover, .nav-signup:hover {
+    background: #f0f0f0;
+}
+
+/* =============== AUTH LAYOUT =============== */
+.auth-container {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding-top: 40px;
+}
+
+/* =============== CARD =============== */
+.auth-card {
+    width: 420px;
+    padding: 35px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.08);
+    text-align: center;
+    z-index: 5;
+}
+
+.auth-card h2 {
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+/* =============== INPUT =============== */
+.input-wrapper {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.input-wrapper svg {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    width: 18px;
+    height: 18px;
+    fill: #6A6A6A;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 12px 14px 12px 45px;
+    border-radius: 12px;
+    border: 1.5px solid #C9CF5E;
+    background: white;
+    font-size: 15px;
+}
+
+/* =============== BUTTON =============== */
+button {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    background: #E8ED9F;
+    color: #4A5D3F;
+    font-weight: 700;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #D4D96F;
+}
+
+/* =============== SWITCH LINK =============== */
+.switch-link {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.switch-link a {
+    color: #4A5D3F;
+    font-weight: 700;
+}
+
+/* =============== SVG WAVE =============== */
+.wave-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 0;
+}
+
+.wave-container svg {
+    width: 100%;
+}

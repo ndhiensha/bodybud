@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BodyBud - Your Gym Friend</title>
+    <title>Login - BodyBud</title>
+
+    <!-- STYLE DARI LANDING PAGE (100% SAMA) -->
     <style>
         * {
             margin: 0;
@@ -13,12 +15,17 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-            background-color: #FFF8F0;
-            overflow-x: hidden;
+            background: linear-gradient(
+                to bottom,
+                #FFF8F0 0%, 
+                #FFF4EB 40%,   /* krem */
+                #F7CFC4 70%,   /* mulai pink lembut */
+                #EAB2A0 100%   /* pink lebih kuat */
+            );
         }
 
         .container {
-            background-color: #FFF8F0;
+
             min-height: 100vh;
             position: relative;
         }
@@ -112,67 +119,119 @@
             background-color: rgba(74, 93, 63, 0.1);
         }
 
-        /* Hero Section */
-        .hero {
+        /* ===== FORM EXACT STYLE ===== */
+
+        .login-card {
+            width: 420px;
+            background: #ffffff;
+            padding: 40px 35px;
+            border-radius: 22px;
+            text-align: center;
+            border: 1px solid #e9e9e9;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .login-card h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2c2c2c;
+            margin-bottom: 25px;
+        }
+
+        .login-wrapper {
+            width: 100%;
+            height: calc(100vh - 90px); /* supaya hitung space setelah navbar */
+            display: flex;
+            justify-content: center;   /* center horizontal */
+            align-items: center;       /* center vertical */
+            position: relative;
+            z-index: 10;
+            margin-top: 0; /* hilangkan dorongan dari atas */
+        }
+
+
+        /* FORM INPUT */
+        .input-field {
+            position: relative;
+            margin-bottom: 18px;
+        }
+
+        .input-field input {
+            width: 100%;
+            padding: 14px 15px 14px 45px;
+            border-radius: 12px;
+            border: 2px solid #dede85;   /* kuning lembut */
+            background: #ffffff;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .input-field input:focus {
+            border-color: #c4c45a;
+        }
+
+        /* ICON DALAM INPUT */
+        .input-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* BUTTON */
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            margin-top: 10px;
+            background: #ecec93;     /* warna kuning muda */
+            border: none;
+            color: #3b3b3b;
+            font-size: 17px;
+            font-weight: 600;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .btn-submit:hover {
+            background: #e1e178;
+        }
+
+        /* Bottom link */
+        .bottom-text {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #444;
+        }
+
+        .bottom-text a {
+            color: #e07ea8;   /* pink seperti gambar */
+            text-decoration: none;
+        }
+
+        .bottom-text a:hover {
+            text-decoration: underline;
+        }
+
+        
+
+        .footer-links {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 60px; 
-            background-color: transparent;
-            position: relative;
-            min-height: calc(100vh - 70px); 
-            overflow: visible;
         }
 
-        .hero-content {
-            flex: 1;
-            max-width: 400px; 
-            z-index: 10; 
-            padding-top: 0px; 
-            margin-left: 100px; 
-            margin-top: -30px; /* DINAikKAN SEDIKIT LAGI */
+        .footer-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
         }
 
-        .hero-title {
-            font-size: 85px;
-            font-weight: 900;
-            color: #5A5A5A;
-            letter-spacing: 5px; 
-            margin-bottom: 8px;
-            line-height: 1;
-        }
-
-        .hero-subtitle {
-            font-size: 46px;
-            font-weight: 400;
-            color: #8A8A8A;
-            margin-bottom: 35px;
-            letter-spacing: normal;
-        }
-
-        .hero-description {
-            font-size: 18px;
-            line-height: 1.75;
-            color: #6A6A6A;
-            margin-bottom: 45px;
-        }
-
-        .btn-start {
-            padding: 16px 65px;
-            background: linear-gradient(90deg, #E8ED9F 0%, #D4D96F 100%);
-            border: none;
-            border-radius: 35px;
-            font-size: 18px;
-            font-weight: 600;
-            color: #4A5D3F;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(212, 217, 111, 0.3);
-        }
-
-        .btn-start:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 217, 111, 0.5);
+        .footer-links a:hover {
+            color: #D4C878;
         }
 
         /* Wave Background */
@@ -191,27 +250,7 @@
             height: 100%;
         }
 
-        /* Runner Silhouette */
-        .runner-silhouette {
-            position: absolute;
-            right: 150px; 
-            bottom: 80px; /* DITURUNKAN SEDIKIT LAGI */
-            width: 320px; 
-            height: 450px; 
-            z-index: 5; 
-            animation: running 1.5s ease-in-out infinite;
-        }
-
-        /* Runner animation */
-        @keyframes running {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-15px);
-            }
-        }
-
+    
         /* Wave animation */
         .wave-back {
             animation: wave1 4s ease-in-out infinite;
@@ -242,18 +281,7 @@
 
         /* Responsive Design */
         @media (max-width: 1200px) {
-            .hero-content {
-                max-width: 350px; 
-                margin-left: 50px; 
-                padding-top: 50px; /* Disesuaikan */
-                margin-top: 0;
-            }
-            .runner-silhouette {
-                width: 250px; 
-                height: 350px; 
-                right: 100px; 
-                bottom: 70px; /* DITURUNKAN */
-            }
+           
             .wave-background {
                 height: 400px; 
             }
@@ -268,31 +296,7 @@
         }
 
         @media (max-width: 1024px) {
-            .hero {
-                flex-direction: column;
-                padding: 60px 40px 320px;
-                align-items: flex-start;
-                min-height: auto;
-            }
-            
-            .hero-content {
-                max-width: 100%; 
-                padding-top: 20px; /* Disesuaikan */
-                margin-left: 0; 
-                margin-top: 0;
-            }
-            
-            .runner-silhouette {
-                right: 50%;
-                transform: translateX(50%);
-                bottom: 60px; /* DITURUNKAN */
-                width: 200px; 
-                height: 280px; 
-            }
-
-            .runner-silhouette:hover {
-                animation: running 1.5s ease-in-out infinite;
-            }
+    
             .wave-background {
                 height: 350px; 
             }
@@ -307,23 +311,6 @@
         }
 
         @media (max-width: 768px) {
-            .hero {
-                padding-bottom: 280px;
-            }
-            
-            .runner-silhouette {
-                width: 180px; 
-                height: 250px; 
-                bottom: 40px; /* DITURUNKAN */
-            }
-            
-            .hero-title {
-                font-size: 52px;
-            }
-            
-            .hero-subtitle {
-                font-size: 30px;
-            }
             
             .wave-background {
                 height: 300px; 
@@ -347,29 +334,6 @@
                 padding: 15px 20px;
             }
             
-            .hero {
-                padding: 40px 20px 240px;
-            }
-            
-            .hero-title {
-                font-size: 40px;
-                letter-spacing: 3px;
-            }
-            
-            .hero-subtitle {
-                font-size: 24px;
-            }
-            
-            .hero-description {
-                font-size: 16px;
-            }
-            
-            .runner-silhouette {
-                width: 150px; 
-                height: 220px; 
-                bottom: 10px; /* DITURUNKAN */
-            }
-            
             .wave-background {
                 height: 250px; 
             }
@@ -383,9 +347,13 @@
             }
         }
     </style>
+
 </head>
 <body>
+
     <div class="container">
+
+        <!-- NAVBAR DARI LANDING PAGE -->
         <nav class="navbar">
             <div class="logo">
                 <svg class="logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -413,26 +381,56 @@
 
         </nav>
 
-        <section class="hero">
-            <div class="hero-content">
-                <h1 class="hero-title">BODYBUD</h1>
-                <h2 class="hero-subtitle">your gym friend</h2>
-                <p class="hero-description">
-                    Find your workout buddy, track your progress, and<br>
-                    stay motivated every day.
-                </p>
-                <a href="{{ route('register') }}" class="btn-start">Start Now</a>
+
+        <!-- LOGIN CARD -->
+        <!-- LOGIN CARD (FIX 100% SAMA UI GAMBAR) -->
+        <div class="login-wrapper">
+            <div class="login-card">
+
+                <h2>Welcome back!</h2>
+
+                <form action="{{ route('login') }}" method="POST">
+                    @csrf
+
+                    <!-- Email Field -->
+                    <div class="input-field">
+                        <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#888">
+                            <path d="M2 4l8 5 8-5v10H2z" stroke="#888" stroke-width="1.5" fill="none"/>
+                        </svg>
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="input-field">
+                        <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#888">
+                            <path d="M6 10V7a4 4 0 018 0v3h1a1 1 0 011 1v5H4v-5a1 1 0 011-1h1zm3 3h2" stroke="#888" 
+                            stroke-linecap="round" stroke-width="1.5" fill="none"/>
+                        </svg>
+                        <input type="password" name="password" placeholder="Password" required>
+                    </div>
+
+                    <!-- Button -->
+                    <button class="btn-submit" type="submit">Login</button>
+
+                    <!-- Bottom Link -->
+                    <p class="bottom-text">
+                        don’t have an account?
+                        <a href="{{ route('register') }}">Sign Up</a>
+                    </p>
+                </form>
             </div>
-            
-            <img class="runner-silhouette" src="{{ asset('images/runner-silhouette.png') }}">
-        </section>
-        
-        <div class="wave-background">
+        </div>
+
+
+        <!-- WAVE COPY PERSIS -->
+         <div class="wave-background">
             <svg viewBox="0 0 1920 450" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
                 <path class="wave-back" d="M0 280 Q480 180 960 280 T1920 280 L1920 450 L0 450 Z" fill="#4A5D3F"/>
                 <path class="wave-front" d="M0 330 Q480 230 960 330 T1920 330 L1920 450 L0 450 Z" fill="#6E825F"/>
             </svg>
         </div>
+
     </div>
+
 </body>
 </html>

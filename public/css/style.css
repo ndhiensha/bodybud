@@ -1,0 +1,304 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    background-color: #FFF8F0; /* Pastikan background putih */
+    overflow-x: hidden;
+}
+
+.container {
+    background-color: #FFF8F0; /* Pastikan background putih */
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Navigation Bar (Tidak ada perubahan) */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px; 
+    background: linear-gradient(90deg, #D4D96F 0%, #C9CF5E 100%);
+    position: relative;
+    z-index: 10;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    width: 32px;
+    height: 32px;
+}
+
+.logo-text {
+    font-size: 22px;
+    font-weight: 700;
+    color: #4A5D3F;
+    letter-spacing: 0.5px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 45px;
+    margin-left: auto;
+    margin-right: 50px;
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    color: #5A6B4F;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.nav-menu li a:hover,
+.nav-menu li a.active {
+    color: #3A4A2F;
+    font-weight: 600;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-login,
+.btn-signup {
+    padding: 8px 20px; 
+    border-radius: 8px;
+    font-size: 14px; 
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+}
+
+.btn-login {
+    background-color: #D4D96F;
+    color: #4A5D3F;
+}
+
+.btn-login:hover {
+    background-color: #C9CF5E;
+}
+
+.btn-signup {
+    background-color: #FFF8F0;
+    color: #4A5D3F;
+    border: 2px solid #4A5D3F;
+}
+
+.btn-signup:hover {
+    background-color: rgba(74, 93, 63, 0.1);
+    transform: none;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 60px;
+    background-color: transparent; /* Pastikan hero tidak menimpa background container */
+    position: relative;
+    min-height: calc(100vh - 70px); 
+    overflow: hidden;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 550px;
+    z-index: 10; 
+    padding-top: 80px;
+}
+
+.hero-title {
+    font-size: 85px;
+    font-weight: 900;
+    color: #5A5A5A;
+    letter-spacing: 5px; 
+    margin-bottom: 8px;
+    line-height: 1;
+}
+
+.hero-subtitle {
+    font-size: 46px;
+    font-weight: 400;
+    color: #8A8A8A;
+    margin-bottom: 35px;
+    letter-spacing: normal;
+}
+
+.hero-description {
+    font-size: 18px;
+    line-height: 1.75;
+    color: #6A6A6A;
+    margin-bottom: 45px;
+}
+
+.btn-start {
+    padding: 16px 65px;
+    background: linear-gradient(90deg, #E8ED9F 0%, #D4D96F 100%);
+    border: none;
+    border-radius: 35px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #4A5D3F;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(212, 217, 111, 0.3);
+}
+
+.btn-start:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 217, 111, 0.5);
+}
+
+/* Wave Background (Satu layar penuh di bagian bawah) */
+.wave-background {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%; 
+    height: 300px; /* Tinggi gelombang */
+    z-index: 2; 
+}
+
+.wave-background svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Runner Silhouette */
+.runner-silhouette {
+    position: absolute;
+    right: 0; /* Posisikan di kanan */
+    bottom: 0; /* Posisikan di bawah */
+    width: 500px; /* Ukuran default */
+    height: 500px;
+    z-index: 5; 
+    transform-origin: bottom right; /* Titik asal transformasi */
+    animation: running 1.5s ease-in-out infinite;
+}
+
+/* Runner animation */
+@keyframes running {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Wave animation */
+.wave-back {
+    animation: wave1 4s ease-in-out infinite;
+}
+
+.wave-front {
+    animation: wave2 3s ease-in-out infinite;
+}
+
+@keyframes wave1 {
+    0%, 100% {
+        d: path("M0 200 Q480 100 960 200 T1920 200 L1920 300 L0 300 Z");
+    }
+    50% {
+        d: path("M0 180 Q480 80 960 180 T1920 180 L1920 300 L0 300 Z");
+    }
+}
+
+@keyframes wave2 {
+    0%, 100% {
+        d: path("M0 250 Q480 150 960 250 T1920 250 L1920 300 L0 300 Z");
+    }
+    50% {
+        d: path("M0 235 Q480 135 960 235 T1920 235 L1920 300 L0 300 Z");
+    }
+}
+
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .runner-silhouette {
+        width: 450px;
+        height: 450px;
+        right: -50px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .hero {
+        flex-direction: column;
+        padding: 60px 40px 0;
+        align-items: flex-start;
+        min-height: auto;
+    }
+    
+    .hero-content {
+        max-width: 100%;
+        padding-top: 40px;
+    }
+    
+    .wave-background {
+        position: relative;
+        height: 250px;
+        margin-top: 40px;
+    }
+    
+    .runner-silhouette {
+        position: relative; /* Buat runner mengalir dengan konten */
+        width: 400px;
+        height: 400px;
+        margin: 20px auto 0; /* Pusatkan runner di bawah konten */
+        right: auto;
+        bottom: auto;
+        transform: translateY(0); /* Reset animasi untuk posisi vertikal */
+    }
+
+    /* Matikan animasi lari di layar kecil jika mengganggu tata letak */
+    .runner-silhouette.running {
+        animation: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .runner-silhouette {
+        width: 300px;
+        height: 300px;
+    }
+    .hero-title {
+        font-size: 52px;
+    }
+    .hero-subtitle {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-menu {
+        display: none;
+    }
+    .hero-title {
+        font-size: 40px;
+    }
+    .hero-subtitle {
+        font-size: 24px;
+    }
+    .runner-silhouette {
+        width: 250px;
+        height: 250px;
+    }
+}
