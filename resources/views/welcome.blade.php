@@ -394,13 +394,14 @@
             </div>
             <ul class="nav-menu">
                 <li><a href="#" class="active">Dashboard</a></li>
-                <li><a href="#">My Workout</a></li>
+                <li><a href="{{ route('myworkout') }}">My Workout</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
             <div class="auth-buttons">
                 <a href="{{ route('login') }}" class="btn-login">Login</a>
                 <a href="{{ route('register') }}" class="btn-signup">Sign Up</a>
+               
             </div>
 
         </nav>

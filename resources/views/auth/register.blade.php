@@ -17,9 +17,9 @@
             background: linear-gradient(
                 to bottom,
                 #FFF8F0 0%, 
-                #FFF4EB 40%,   /* krem */
-                #F7CFC4 70%,   /* mulai pink lembut */
-                #EAB2A0 100%   /* pink lebih kuat */
+                #FFF4EB 40%,   
+                #F7CFC4 70%,   
+                #EAB2A0 100%   
             );
         }
 
