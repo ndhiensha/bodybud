@@ -43,13 +43,14 @@
 
         .logo {
             display: flex;
-            align-items: center;
+            align-items: center;      
             gap: 10px;
         }
 
-        .logo-icon {
-            width: 32px;
-            height: 32px;
+        .logo-img {
+            width: 38px;
+            height: auto;
+            object-fit: contain;
         }
 
         .logo-text {
@@ -58,6 +59,7 @@
             color: #4A5D3F;
             letter-spacing: 0.5px;
         }
+
 
         .nav-menu {
             display: flex;
@@ -234,6 +236,44 @@
             color: #D4C878;
         }
 
+               
+        .decor {
+            position: absolute;
+            z-index: 1;
+            opacity: 0.85;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        /* === POSISI === */
+        .dumbbell-left {
+            width: 90px;
+            top: 150px;
+            left: 90px;
+            transform: rotate(-20deg);
+        }
+
+        .shoe-left {
+            width: 110px;
+            top: 360px;
+            left: 120px;
+            transform: rotate(10deg);
+        }
+
+        .dumbbell-right {
+            width: 90px;
+            top: 350px;
+            right: 160px;
+            transform: rotate(20deg);
+        }
+
+        .shoe-right {
+            width: 115px;
+            top: 150px;
+            right: 130px;
+            transform: rotate(-15deg);
+        }
+
         /* Wave Background */
         .wave-background {
             position: absolute;
@@ -356,16 +396,7 @@
         <!-- NAVBAR DARI LANDING PAGE -->
         <nav class="navbar">
             <div class="logo">
-                <svg class="logo-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4 12L16 3L28 12V26C28 26.5304 27.7893 27.0391 27.4142 27.4142C27.0391 27.7893 26.5304 28 26 28H6C5.46957 28 4.96086 27.7893 4.58579 27.4142C4.21071 27.0391 4 26.5304 4 26V12Z" stroke="#4A5D3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <circle cx="11" cy="17" r="2" fill="#4A5D3F"/>
-                    <circle cx="21" cy="17" r="2" fill="#4A5D3F"/>
-                    <line x1="11" y1="17" x2="21" y2="17" stroke="#4A5D3F" stroke-width="2"/>
-                    <line x1="9" y1="15" x2="9" y2="19" stroke="#4A5D3F" stroke-width="1.5"/>
-                    <line x1="13" y1="15" x2="13" y2="19" stroke="#4A5D3F" stroke-width="1.5"/>
-                    <line x1="19" y1="15" x2="19" y2="19" stroke="#4A5D3F" stroke-width="1.5"/>
-                    <line x1="23" y1="15" x2="23" y2="19" stroke="#4A5D3F" stroke-width="1.5"/>
-                </svg>
+                <img src="/images/logo.png" alt="BodyBud Logo" class="logo-img">
                 <span class="logo-text">BodyBud</span>
             </div>
             <ul class="nav-menu">
@@ -381,6 +412,11 @@
 
         </nav>
 
+        <!-- DECORATION ELEMENTS -->
+        <img src="/images/dumbbell.png" class="decor dumbbell-left">
+        <img src="/images/shoe.png" class="decor shoe-left">
+        <img src="/images/dumbbell.png" class="decor dumbbell-right">
+        <img src="/images/shoe.png" class="decor shoe-right">
 
         <!-- LOGIN CARD -->
         <!-- LOGIN CARD (FIX 100% SAMA UI GAMBAR) -->
