@@ -49,10 +49,12 @@
 }
 
 .logo-text {
-    font-size: 22px;
-    font-weight: 700;
-    color: #4A5D3F;
-}
+            font-size: 22px;
+            font-weight: 700;
+            color: #4A5D3F;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+        }
 
 .nav-menu {
     display: flex;

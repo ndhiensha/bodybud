@@ -21,9 +21,7 @@ Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
 
-Route::get('/myworkout', function () {
-    return view('myworkout');
-})->name('myworkout');
+
 
 
 
@@ -39,6 +37,10 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])
   ->name('dashboard');
 
+  Route::get('/myworkout', function () {
+    return view('myworkout');
+})->middleware(['auth', 'verified'])
+  ->name('myworkout');
 
 
 /*

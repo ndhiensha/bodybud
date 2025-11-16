@@ -56,6 +56,7 @@
             font-weight: 700;
             color: #4A5D3F;
             letter-spacing: 0.5px;
+            text-decoration: none;
         }
 
         .nav-menu {
@@ -383,11 +384,11 @@
     <nav class="navbar">
             <div class="logo">
                 <img src="/images/logo.png" alt="BodyBud Logo" class="logo-img">
-                <span class="logo-text">BodyBud</span>
+                    <a href="#" class="logo-text">BodyBud</a>
             </div>
             <ul class="nav-menu">
-                <li><a href="#" class="active">Dashboard</a></li>
-                <li><a href="#">My Workout</a></li>
+                <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                <li><a href="{{ route('myworkout') }}" >My Workout</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
