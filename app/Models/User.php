@@ -2,22 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use Notifiable;
 
     protected $fillable = [
-        'username',
         'name',
         'email',
-        'password',
-        'biodata',
-        'foto_profil',
-        'nomor_telepon',
+        'password'
     ];
 
     protected $hidden = [
@@ -36,7 +32,7 @@ class User extends Authenticatable
         return $this->hasMany(UserActivityLog::class);
     }
 
-    public function notifikasis()
+    public function notifications()
     {
         return $this->hasMany(Notifikasi::class);
     }

@@ -13,13 +13,12 @@ Route::get('/', function () {
     return view('welcome'); // halaman utama (public)
 })->name('welcome');
 
-Route::get('/register', function () {
-    return view('auth.register');
-})->name('register');
+Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
 
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('login');
+
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/notifications/get', [NotificationController::class, 'getUserNotifications'])
     ->name('notifications.get')
@@ -35,15 +34,15 @@ Route::get('/notifications/get', [NotificationController::class, 'getUserNotific
 |--------------------------------------------------------------------------
 */
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])
-  ->name('dashboard');
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 
-  Route::get('/myworkout', function () {
-    return view('myworkout');
-})->middleware(['auth', 'verified'])
-  ->name('myworkout');
+ Route::get('/myworkout', function () {
+        return view('myworkout');
+    })->name('myworkout');
+});
 
 
  use App\Http\Controllers\NotificationController;

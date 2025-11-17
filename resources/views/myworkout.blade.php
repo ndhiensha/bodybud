@@ -141,6 +141,8 @@
 
     <!-- SCRIPT -->
     <script src="{{ asset('js/workout.js') }}"></script>
+    
+    <script src="{{ asset('js/footer.js') }}"></script>
 
 </body>
 </html>
