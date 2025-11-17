@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Notifikasi extends Model
 {
     use HasFactory;
+    protected $table = 'notifications';
+
 
     protected $primaryKey = 'notifikasi_id';
 

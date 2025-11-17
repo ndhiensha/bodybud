@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up(): void
+    public function up()
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->id('notification_id');
@@ -17,11 +17,10 @@ return new class extends Migration
             $table->enum('status', ['terkirim', 'gagal', 'ditunda'])->default('ditunda');
             $table->integer('retry_count')->default(0);
             $table->text('error_message')->nullable();
+            $table->timestamp('sent_at')->nullable();
             $table->timestamps();
-            
-            $table->index('user_id');
-            $table->index('status');
         });
+
     }
 
     public function down(): void
