@@ -21,6 +21,9 @@ Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
 
+Route::get('/notifications/get', [NotificationController::class, 'getUserNotifications'])
+    ->name('notifications.get')
+    ->middleware('auth');
 
 
 
@@ -43,6 +46,12 @@ Route::get('/dashboard', function () {
   ->name('myworkout');
 
 
+ use App\Http\Controllers\NotificationController;
+
+Route::get('/notifikasi', [NotificationController::class, 'getUserNotifications'])
+    ->middleware('auth')
+    ->name('notifikasi');
+ 
 /*
 |--------------------------------------------------------------------------
 | Authenticated User Routes (Profil dsb)

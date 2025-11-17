@@ -387,7 +387,7 @@
                     <a href="#" class="logo-text">BodyBud</a>
             </div>
             <ul class="nav-menu">
-                <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                <li><a href="{{ route('dashboard') }}">Home</a></li>
                 <li><a href="{{ route('myworkout') }}" >My Workout</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">Contact</a></li>

@@ -290,15 +290,12 @@ class NotificationController extends Controller
     public function getUserNotifications(Request $request)
     {
         $userId = $request->user()->id;
-        
+
         $notifications = Notifikasi::where('user_id', $userId)
             ->orderBy('created_at', 'desc')
-            ->paginate(10);
+            ->get();
 
-        return response()->json([
-            'success' => true,
-            'data' => $notifications,
-        ]);
+        return view('dashboard', compact('notifications'));
     }
 
     /**

@@ -14,16 +14,46 @@
     <div class="container">
 
         <nav class="navbar">
-            <div class="logo">
+             <div class="logo">
                 <img src="/images/logo.png" alt="BodyBud Logo" class="logo-img">
-                    <a href="#" class="logo-text">BodyBud</a>
+                <a href="#" class="logo-text">BodyBud</a>
             </div>
+
+            <!-- CENTER : MENU -->
             <ul class="nav-menu">
-                <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                <li><a href="{{ route('myworkout') }}" >My Workout</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="{{ route('dashboard') }}">Home</a></li>
+                <li><a href="{{ route('myworkout') }}" class="active">My Workout</a></li>
+                <li><a href="#">Progress</a></li>
+                <li><a href="#">Profile</a></li>
             </ul>
+
+            <!-- RIGHT : ICONS & USER -->
+            <div class="nav-icons">
+
+                <!-- Notification -->
+                <button class="icon-btn" style="position: relative;">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="23">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 00-4-5.7V5a2 2 0 10-4 0v.3A6 6 0 006 11v3.2c0 .5-.2 1-.6 1.4L4 17h5m6 0v1a3 3 0 11-6 0v-1"/>
+                    </svg>
+                    <span class="notif-badge">3</span>
+                </button>
+
+                <!-- User -->
+                <div class="user-info">
+                    <div class="user-avatar">👤</div>
+                    <span class="user-name">{{ Auth::user()->name }}</span>
+                </div>
+
+                <!-- Logout -->
+                <button class="icon-btn">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="22">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 16l4-4-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                    </svg>
+                </button>
+
+            </div>
         </nav>
 
        <!-- HEADER (WITH FRAME) -->
