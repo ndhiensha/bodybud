@@ -1,7 +1,14 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
+// Controllers
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProgressController;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\WorkoutActivityLogController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -10,64 +17,85 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome'); // halaman utama (public)
+    return view('welcome');
 })->name('welcome');
 
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
 
-
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
-
-Route::get('/notifications/get', [NotificationController::class, 'getUserNotifications'])
-    ->name('notifications.get')
-    ->middleware('auth');
-
-
-
 
 
 /*
 |--------------------------------------------------------------------------
-| Dashboard (Hanya untuk user yang sudah login)
+| Routes Dengan Middleware Auth
 |--------------------------------------------------------------------------
 */
 
 Route::middleware('auth')->group(function () {
+
+    /*
+    |--------------------------------------------------------------
+    | Dashboard & Static Pages
+    |--------------------------------------------------------------
+    */
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
 
- Route::get('/myworkout', function () {
+    Route::get('/myworkout', function () {
         return view('myworkout');
     })->name('myworkout');
+
+
+    /*
+    |--------------------------------------------------------------
+    | Progress
+    |--------------------------------------------------------------
+    */
+    Route::get('/progress', [ProgressController::class, 'showPage'])->name('progress');
+    Route::post('/progress/start', [ProgressController::class, 'start']);
+    Route::put('/progress/{id}', [ProgressController::class, 'updateSets']);
+
+
+    /*
+    |--------------------------------------------------------------
+    | Workout Activity Logs
+    |--------------------------------------------------------------
+    */
+    Route::get('/activity', [WorkoutActivityLogController::class, 'index']);
+    Route::post('/activity/add', [WorkoutActivityLogController::class, 'store']);
+    Route::get('/activity/stats', [WorkoutActivityLogController::class, 'stats']);
+
+
+    /*
+    |--------------------------------------------------------------
+    | Notifications
+    |--------------------------------------------------------------
+    */
+    Route::get('/notifications/get', [NotificationController::class, 'getUserNotifications'])
+        ->name('notifications.get');
+
+    Route::get('/notifikasi', [NotificationController::class, 'getUserNotifications'])
+        ->name('notifikasi');
+
+
+    /*
+    |--------------------------------------------------------------
+    | Profile
+    |--------------------------------------------------------------
+    */
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
 });
 
 
- use App\Http\Controllers\NotificationController;
-
-Route::get('/notifikasi', [NotificationController::class, 'getUserNotifications'])
-    ->middleware('auth')
-    ->name('notifikasi');
- 
 /*
 |--------------------------------------------------------------------------
-| Authenticated User Routes (Profil dsb)
+| Auth Scaffolding Routes Breeze/Fortify/Jetstream
 |--------------------------------------------------------------------------
 */
-
-Route::middleware('auth')->group(function () {
-
-    Route::get('/profile', [ProfileController::class, 'edit'])
-        ->name('profile.edit');
-
-    Route::patch('/profile', [ProfileController::class, 'update'])
-        ->name('profile.update');
-
-    Route::delete('/profile', [ProfileController::class, 'destroy'])
-        ->name('profile.destroy');
-});
-
-
 require __DIR__.'/auth.php';
