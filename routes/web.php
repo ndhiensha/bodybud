@@ -85,13 +85,17 @@ Route::middleware('auth')->group(function () {
     | Profile (Grup rute profile yang benar)
     |--------------------------------------------------------------
     */
-    Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+       Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     
-    // Jika Anda ingin menggunakan show, ganti edit. Saya biarkan `edit` sesuai kode awal Anda.
-    // Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show'); 
+    // Update profile
+    Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
     
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // Update password
+    Route::post('/profile/update-password', [ProfileController::class, 'updatePassword'])->name('profile.updatePassword');
+    
+    // Delete profile picture
+    Route::delete('/profile/delete-picture', [ProfileController::class, 'deleteProfilePicture'])->name('profile.deletePicture');
+    
 });
 
 
