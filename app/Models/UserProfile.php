@@ -6,11 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class UserProfile extends Authenticatable
+class User extends Authenticatable
 {
     use HasFactory, Notifiable;
-
-    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.
@@ -22,12 +20,11 @@ class UserProfile extends Authenticatable
         'email',
         'password',
         'gender',
-        'date_of_birth',
-        'phone_number',
-        'address',
+        'dob',
         'weight',
         'height',
-        'profile_picture',
+        'phone',
+        'address',
     ];
 
     /**
@@ -50,9 +47,37 @@ class UserProfile extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
-            'date_of_birth' => 'date',
+            'dob' => 'date',
             'weight' => 'decimal:2',
             'height' => 'decimal:2',
         ];
+    }
+
+    /**
+     * Get the user's full name with title.
+     */
+    public function getFullNameAttribute(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * Get the user's age based on date of birth.
+     */
+    public function getAgeAttribute(): ?int
+    {
+        return $this->dob ? now()->diffInYears($this->dob) : null;
+    }
+
+    /**
+     * Get the user's BMI (Body Mass Index).
+     */
+    public function getBmiAttribute(): ?float
+    {
+        if ($this->weight && $this->height) {
+            $heightInMeters = $this->height / 100;
+            return round($this->weight / ($heightInMeters * $heightInMeters), 2);
+        }
+        return null;
     }
 }

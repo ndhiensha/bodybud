@@ -90,6 +90,40 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+/*
+|--------------------------------------------------------------------------
+| Profile Routes
+|--------------------------------------------------------------------------
+|
+| Add these routes to your existing web.php file
+|
+*/
+
+// Profile routes (protected by auth middleware)
+Route::middleware(['auth'])->group(function () {
+    // Show profile page
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+    
+    // Update profile
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    
+    // Delete account
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+// Other routes...
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/workout', function () {
+    return view('workout');
+})->middleware('auth');
+
+Route::get('/progress', function () {
+    return view('progress');
+})->middleware('auth');
+
 });
 
 
@@ -99,3 +133,5 @@ Route::middleware('auth')->group(function () {
 |--------------------------------------------------------------------------
 */
 require __DIR__.'/auth.php';
+
+
