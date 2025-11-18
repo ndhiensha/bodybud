@@ -1,3 +1,4 @@
+// database/migrations/xxxx_add_profile_fields_to_users_table.php
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -6,10 +7,10 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up(): void
+    public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->enum('gender', ['male', 'female'])->nullable();
+            $table->string('gender')->nullable();
             $table->date('date_of_birth')->nullable();
             $table->string('phone_number')->nullable();
             $table->text('address')->nullable();
@@ -19,10 +20,13 @@ return new class extends Migration
         });
     }
 
-    public function down(): void
+    public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['gender', 'date_of_birth', 'phone_number', 'address', 'weight', 'height', 'profile_picture']);
+            $table->dropColumn([
+                'gender', 'date_of_birth', 'phone_number', 
+                'address', 'weight', 'height', 'profile_picture'
+            ]);
         });
     }
 };
