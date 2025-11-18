@@ -24,7 +24,7 @@
             <li><a href="{{ route('myworkout') }}">My Workout</a></li>
             <li><a href="{{ route('progress') }}">Progress</a>
 
-            <li><a href="#">Profile</a></li>
+            <li><a href="{{ route('profile') }}">Profile</a></li>
         </ul>
 
         <div class="nav-icons">

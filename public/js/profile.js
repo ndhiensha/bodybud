@@ -90,4 +90,51 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Toggle edit mode
+        function toggleEdit() {
+            const formFields = document.querySelectorAll('#profileFormFields input, #profileFormFields select');
+            const btnEdit = document.getElementById('btnEdit');
+            const btnSave = document.getElementById('btnSave');
+            const formGroups = document.querySelectorAll('.form-group');
+
+            formFields.forEach(field => {
+                field.disabled = false;
+            });
+
+            formGroups.forEach(group => {
+                group.classList.remove('form-readonly');
+            });
+
+            btnEdit.style.display = 'none';
+            btnSave.style.display = 'block';
+        }
+         /* === LOGOUT MODAL === */
+        const btnLogout = document.getElementById("btnLogout");
+        const logoutModal = document.getElementById("logoutModal");
+        const btnCancelLogout = document.getElementById("btnCancelLogout");
+
+        btnLogout.addEventListener("click", () => {
+            logoutModal.classList.add("active");
+        });
+
+        btnCancelLogout.addEventListener("click", () => {
+            logoutModal.classList.remove("active");
+        });
+
+        logoutModal.addEventListener("click", (e) => {
+            if (e.target === logoutModal) {
+                logoutModal.classList.remove("active");
+            }
+        });
 });

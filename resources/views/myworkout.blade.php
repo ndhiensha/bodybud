@@ -23,21 +23,23 @@
             <ul class="nav-menu">
                 <li><a href="{{ route('dashboard') }}">Home</a></li>
                 <li><a href="{{ route('myworkout') }}" class="active">My Workout</a></li>
-                <li><a href="#">Progress</a></li>
-                <li><a href="#">Profile</a></li>
+                <li><a href="{{ route('progress') }}">Progress</a></li>
+                <li><a href="{{ route('profile') }}">Profile</a></li>
             </ul>
 
             <!-- RIGHT : ICONS & USER -->
             <div class="nav-icons">
 
-                <!-- Notification -->
-                <button class="icon-btn" style="position: relative;">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="23">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 00-4-5.7V5a2 2 0 10-4 0v.3A6 6 0 006 11v3.2c0 .5-.2 1-.6 1.4L4 17h5m6 0v1a3 3 0 11-6 0v-1"/>
-                    </svg>
-                    <span class="notif-badge">3</span>
-                </button>
+                <!-- NOTIFICATION -->
+            <a class="icon-btn" id="notifBtn">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="23">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 00-4-5.7V5a2 2 0 10-4 0v.3A6 6 0 006 11v3.2c0 .5-.2 1-.6 1.4L4 17h5m6 0v1a3 3 0 11-6 0v-1"/>
+                </svg>
+                @if($unreadCount ?? false)
+                    <span class="notif-badge">{{ $unreadCount }}</span>
+                @endif
+            </a>
 
                 <!-- User -->
                 <div class="user-info">
@@ -135,6 +137,23 @@
                 <button class="btn-submit" onclick="saveWorkout()">Simpan</button>
             </div>
 
+        </div>
+            <!-- LOGOUT MODAL -->
+        <div id="logoutModal" class="logout-modal">
+            <div class="logout-content">
+                <h2>Yakin Mau Keluar?</h2>
+                <p>Kamu akan logout dari BodyBud.</p>
+
+                <div class="logout-actions">
+                    <button class="btn-cancel-logout" id="btnCancelLogout">Batal</button>
+
+                    <!-- Laravel logout route -->
+                    <form id="logoutForm" method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button class="btn-confirm-logout" type="submit">Ya, Keluar</button>
+                    </form>
+                </div>
+            </div>
         </div>
 
     </div>

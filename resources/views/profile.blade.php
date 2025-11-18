@@ -4,283 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Profile - BeeFit</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <style>
-        /* Profile Page Specific Styles */
-        .profile-container {
-            padding-top: 100px;
-            padding-bottom: 60px;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #FFF8F0;
-        }
-
-        .profile-card {
-            background-color: #FFFFFF;
-            border-radius: 20px;
-            padding: 50px 60px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            max-width: 600px;
-            width: 100%;
-            margin-bottom: 30px;
-            position: relative;
-        }
-
-        .profile-avatar {
-            position: absolute;
-            top: -50px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background-color: #A8AAA4;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-            cursor: pointer;
-            position: relative;
-        }
-
-        .profile-avatar svg {
-            width: 50px;
-            height: 50px;
-            fill: #FFFFFF;
-        }
-
-        .avatar-edit {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            background-color: #5A6B4F;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            border: 3px solid #FFFFFF;
-        }
-
-        .avatar-edit svg {
-            width: 15px;
-            height: 15px;
-            fill: #FFFFFF;
-        }
-
-        .profile-name {
-            text-align: center;
-            margin-top: 60px;
-            margin-bottom: 10px;
-        }
-
-        .profile-name h2 {
-            font-size: 26px;
-            font-weight: 700;
-            color: #333333;
-            margin-bottom: 5px;
-        }
-
-        .profile-email {
-            text-align: center;
-            color: #999999;
-            font-size: 14px;
-            margin-bottom: 35px;
-        }
-
-        .profile-form {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px 40px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-group label {
-            font-size: 14px;
-            font-weight: 600;
-            color: #555555;
-            margin-bottom: 8px;
-        }
-
-        .form-group input,
-        .form-group select {
-            padding: 10px 15px;
-            border: none;
-            border-bottom: 2px solid #E0E0E0;
-            background-color: transparent;
-            font-size: 14px;
-            color: #333333;
-            transition: all 0.3s;
-            outline: none;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus {
-            border-bottom-color: #D4D96F;
-        }
-
-        .form-group input::placeholder {
-            color: #CCCCCC;
-        }
-
-        .form-divider {
-            grid-column: 1 / -1;
-            height: 1px;
-            background-color: #E8E8E8;
-            margin: 10px 0;
-        }
-
-        .btn-save,
-        .btn-edit {
-            grid-column: 1 / -1;
-            padding: 14px 0;
-            background: linear-gradient(90deg, #E8ED9F 0%, #D4D96F 100%);
-            border: none;
-            border-radius: 25px;
-            font-size: 16px;
-            font-weight: 600;
-            color: #4A5D3F;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 15px;
-        }
-
-        .btn-save:hover,
-        .btn-edit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 217, 111, 0.4);
-        }
-
-        .achievement-card {
-            background-color: #FFFFFF;
-            border-radius: 20px;
-            padding: 40px 60px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            max-width: 600px;
-            width: 100%;
-        }
-
-        .achievement-card h3 {
-            text-align: center;
-            font-size: 22px;
-            font-weight: 700;
-            color: #333333;
-            margin-bottom: 30px;
-        }
-
-        .achievement-badges {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            gap: 30px;
-        }
-
-        .badge {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 45px;
-            position: relative;
-        }
-
-        .badge-gold {
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
-        }
-
-        .badge-pink {
-            background: linear-gradient(135deg, #FFB6C1 0%, #FFA0B4 100%);
-            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.4);
-        }
-
-        .badge-teal {
-            background: linear-gradient(135deg, #87CEEB 0%, #5FA8D3 100%);
-            box-shadow: 0 4px 15px rgba(135, 206, 235, 0.4);
-        }
-
-        .form-readonly input,
-        .form-readonly select {
-            background-color: #F9F9F9;
-            color: #999999;
-            cursor: not-allowed;
-        }
-
-        .alert {
-            padding: 12px 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            font-size: 14px;
-            text-align: center;
-        }
-
-        .alert-success {
-            background-color: #D4EDDA;
-            color: #155724;
-            border: 1px solid #C3E6CB;
-        }
-
-        .alert-error {
-            background-color: #F8D7DA;
-            color: #721C24;
-            border: 1px solid #F5C6CB;
-        }
-
-        @media (max-width: 768px) {
-            .profile-card,
-            .achievement-card {
-                padding: 40px 30px;
-                margin: 0 20px 30px;
-            }
-
-            .profile-form {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .achievement-badges {
-                flex-wrap: wrap;
-                gap: 20px;
-            }
-
-            .badge {
-                width: 80px;
-                height: 80px;
-                font-size: 35px;
-            }
-        }
-    </style>
+    <title>Profile - Bodybud</title>
+    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+   
 </head>
 <body>
     <div class="container">
-        <!-- Navigation Bar -->
-        <nav class="navbar" id="navbar">
-            <div class="logo">
-                <img src="{{ asset('images/logo.png') }}" alt="BeeFit Logo" class="logo-img">
-                <a href="{{ url('/') }}" class="logo-text">BeeFit</a>
+       <nav class="navbar">
+             <div class="logo">
+                <img src="/images/logo.png" alt="BodyBud Logo" class="logo-img">
+                <a href="#" class="logo-text">BodyBud</a>
             </div>
+
+            <!-- CENTER : MENU -->
             <ul class="nav-menu">
-                <li><a href="{{ url('/') }}">Home</a></li>
-                <li><a href="{{ url('/workout') }}">My Workout</a></li>
-                <li><a href="{{ url('/progress') }}">Progress</a></li>
-                <li><a href="{{ url('/profile') }}" class="active">Profile</a></li>
+                <li><a href="{{ route('dashboard') }}">Home</a></li>
+                <li><a href="{{ route('myworkout') }}" >My Workout</a></li>
+                <li><a href="{{ route('progress') }}">Progress</a></li>
+                <li><a href="{{ route('profile') }}" class="active">Profile</a></li>
             </ul>
-            <div class="auth-buttons">
-                <button class="btn-login">🔔</button>
-                <a href="{{ url('/logout') }}" class="btn-signup">Logout</a>
-            </div>
+
+            <!-- RIGHT : ICONS & USER -->
+            <div class="nav-icons">
+
+                <!-- NOTIFICATION -->
+            <a class="icon-btn" id="notifBtn">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="23">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 00-4-5.7V5a2 2 0 10-4 0v.3A6 6 0 006 11v3.2c0 .5-.2 1-.6 1.4L4 17h5m6 0v1a3 3 0 11-6 0v-1"/>
+                </svg>
+                @if($unreadCount ?? false)
+                    <span class="notif-badge">{{ $unreadCount }}</span>
+                @endif
+            </a>
+
+                <!-- User -->
+                <div class="user-info">
+                    <div class="user-avatar">👤</div>
+                    <span class="user-name">{{ Auth::user()->name }}</span>
+                </div>
+
+                <!-- Logout -->
+                <button class="icon-btn"id="btnLogout">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="22">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 16l4-4-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                    </svg>
+                </button>
         </nav>
+
 
         <!-- Profile Section -->
         <div class="profile-container">
@@ -369,37 +141,71 @@
                 </div>
             </div>
         </div>
+                <!-- LOGOUT MODAL -->
+        <div id="logoutModal" class="logout-modal">
+            <div class="logout-content">
+                <h2>Yakin Mau Keluar?</h2>
+                <p>Kamu akan logout dari BodyBud.</p>
+
+                <div class="logout-actions">
+                    <button class="btn-cancel-logout" id="btnCancelLogout">Batal</button>
+
+                    <!-- Laravel logout route -->
+                    <form id="logoutForm" method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button class="btn-confirm-logout" type="submit">Ya, Keluar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+    <footer class="footer">
+        <div class="footer-container">
 
-        // Toggle edit mode
-        function toggleEdit() {
-            const formFields = document.querySelectorAll('#profileFormFields input, #profileFormFields select');
-            const btnEdit = document.getElementById('btnEdit');
-            const btnSave = document.getElementById('btnSave');
-            const formGroups = document.querySelectorAll('.form-group');
+            <div class="footer-left">
+                <h2>BODYBUD</h2>
+                <p>Your personal fitness buddy to track workouts, stay motivated, and grow stronger every day.</p>
+            </div>
 
-            formFields.forEach(field => {
-                field.disabled = false;
-            });
+            <div class="footer-links">
+                <h3>Menu</h3>
+                <a href="/">Home</a>
+                <a href="/dashboard">Dashboard</a>
+                <a href="#">Workouts</a>
+                <a href="#">Progress</a>
+            </div>
 
-            formGroups.forEach(group => {
-                group.classList.remove('form-readonly');
-            });
+            <div class="footer-links">
+                <h3>Support</h3>
+                <a href="#">FAQ</a>
+                <a href="#">Contact</a>
+                <a href="#">Feedback</a>
+            </div>
 
-            btnEdit.style.display = 'none';
-            btnSave.style.display = 'block';
-        }
-    </script>
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#4A5D3F" viewBox="0 0 24 24"><path d="M22.23 0H1.77A1.77 1.77 0 000 1.77v20.46A1.77 1.77 0 001.77 24h11V14.7h-3V11h3V8.41c0-3 1.8-4.66 4.53-4.66 1.31 0 2.68.23 2.68.23v3h-1.51c-1.49 0-1.95.92-1.95 1.86V11h3.32l-.53 3.7H17.5V24h4.73A1.77 1.77 0 0024 22.23V1.77A1.77 1.77 0 0022.23 0z"/></svg></a>
+
+                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#4A5D3F" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775A4.958 4.958 0 0023.337 3a9.864 9.864 0 01-3.127 1.2A4.92 4.92 0 0016.616 3c-2.72 0-4.924 2.208-4.924 4.917 0 .39.045.765.127 1.124C7.728 8.89 4.1 6.89 1.67 3.9a4.822 4.822 0 00-.666 2.475c0 1.708.875 3.214 2.207 4.096a4.903 4.903 0 01-2.225-.616v.06c0 2.385 1.723 4.374 4.067 4.827a4.996 4.996 0 01-2.212.084c.623 1.934 2.445 3.342 4.6 3.383A9.868 9.868 0 010 19.54 13.94 13.94 0 007.548 22c9.142 0 14.307-7.72 13.995-14.646A9.936 9.936 0 0024 4.59z"/></svg></a>
+
+                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#4A5D3F" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.97.24 2.43.403a4.92 4.92 0 011.73 1.122 4.92 4.92 0 011.122 1.73c.163.46.349 1.26.403 2.43.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.24 1.97-.403 2.43a4.92 4.92 0 01-1.122 1.73 4.92 4.92 0 01-1.73 1.122c-.46.163-1.26.349-2.43.403-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.97-.24-2.43-.403a4.92 4.92 0 01-1.73-1.122 4.92 4.92 0 01-1.122-1.73c-.163-.46-.349-1.26-.403-2.43C2.175 15.747 2.163 15.367 2.163 12s.012-3.584.07-4.85c.054-1.17.24-1.97.403-2.43a4.92 4.92 0 011.122-1.73A4.92 4.92 0 015.488 1.76c.46-.163 1.26-.349 2.43-.403C9.184 1.299 9.564 1.287 12 1.287m0-1.287C8.735 0 8.332.013 7.053.072 5.775.131 4.89.322 4.18.588a6.18 6.18 0 00-2.24 1.462A6.18 6.18 0 00.477 4.29c-.266.71-.457 1.595-.516 2.873C-.013 8.442 0 8.845 0 12c0 3.155-.013 3.558.072 4.837.059 1.278.25 2.163.516 2.873.33.88.82 1.64 1.462 2.24a6.18 6.18 0 002.24 1.462c.71.266 1.595.457 2.873.516C8.332 24.013 8.735 24 12 24s3.668.013 4.947-.072c1.278-.059 2.163-.25 2.873-.516a6.18 6.18 0 002.24-1.462 6.18 6.18 0 001.462-2.24c.266-.71.457-1.595.516-2.873.059-1.279.072-1.682.072-4.837 0-3.155-.013-3.558-.072-4.837-.059-1.278-.25-2.163-.516-2.873a6.18 6.18 0 00-1.462-2.24A6.18 6.18 0 0019.82.588c-.71-.266-1.595-.457-2.873-.516C15.668.013 15.265 0 12 0z"/></svg></a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 BODYBUD — All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="{{ asset('js/profile.js') }}"></script>
+    
+    <script src="{{ asset('js/footer.js') }}"></script>
+
+    
 </body>
 </html>

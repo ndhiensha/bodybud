@@ -1,0 +1,603 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+
+            /* 🌈 Gradient sekarang MENUTUPI seluruh halaman */
+            background: linear-gradient(
+                to bottom,
+                #FFF8F0 0%, 
+                #FFF4EB 20%,   
+                #F7D9CF 55%,    
+                #F1B9A7 80%,
+                #E7A693 100%
+            );
+
+            background-attachment: fixed; /* 🌟 KUNCI: scroll tetap rapih */
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px; 
+            background: linear-gradient(90deg, #D4D96F 0%, #C9CF5E 100%);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 12px 50px;
+            background: linear-gradient(90deg, #C9CF5E 0%, #BEC555 100%);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* LEFT: LOGO */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            width: 42px;
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 700;
+            color: #4A5D3F;
+            text-decoration: none;
+        }
+
+        /* CENTER: MENU */
+        .nav-menu {
+            display: flex;
+            gap: 45px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            font-size: 16px;
+            color: #4A5D3F;
+            font-weight: 600;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu .active {
+            color: #2F3C24;
+        }
+
+        /* RIGHT: ICONS & USER */
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .icon-btn {
+            background: none;            /* remove white box */
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: .2s;
+        }
+
+        .icon-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .notif-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: #FF6B6B;
+            padding: 2px 6px;
+            border-radius: 50%;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 14px;
+            background: rgba(255, 255, 255, 0.35);
+            border-radius: 14px;
+        }
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .user-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: #3E4D37;
+        }
+
+        .icon-btn {
+            background: rgba(255, 255, 255, 0.5);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            cursor: pointer;
+            color: #4A5D3F;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s;
+            position: relative;
+        }
+
+        .icon-btn:hover {
+            background: white;
+            transform: scale(1.05);
+        }
+
+        .icon-btn svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .notif-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: #FF6B6B;
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+.footer {
+        margin-top: 120px;
+        background: linear-gradient(180deg, #FFFFFF 0%, #FFF2E8 100%);
+        padding: 60px 120px 30px;
+        border-top: 4px solid #E7A693;
+        box-shadow: 0 -6px 20px rgba(0,0,0,0.08);
+    }
+
+    .footer-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 50px;
+        flex-wrap: wrap;
+    }
+
+    .footer-left h2 {
+        font-size: 28px;
+        font-weight: 800;
+        color: #4A5D3F;
+        margin-bottom: 12px;
+    }
+
+    .footer-left p {
+        max-width: 350px;
+        color: #6A7A5C;
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .footer-links h3,
+    .footer-social h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 14px;
+        color: #3E4D37;
+    }
+
+    .footer-links a {
+        display: block;
+        font-size: 15px;
+        margin-bottom: 8px;
+        color: #6A7A5C;
+        text-decoration: none;
+        transition: .25s;
+    }
+
+    .footer-links a:hover {
+        color: #3E4D37;
+        font-weight: 600;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 18px;
+        margin-top: 6px;
+    }
+
+    .social-icons a {
+        display: flex;
+        width: 38px;
+        height: 38px;
+        background: rgba(255, 255, 255, 0.6);
+        justify-content: center;
+        align-items: center;
+        border-radius: 12px;
+        transition: .25s;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .social-icons a:hover {
+        background: white;
+        transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+        margin-top: 40px;
+        text-align: center;
+        padding-top: 18px;
+        border-top: 1px solid #E7A693;
+    }
+
+    .footer-bottom p {
+        color: #6A7A5C;
+        font-size: 14px;
+    }
+
+
+/* ... (Gaya Footer lainnya tetap sama) ... */
+
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+    .footer {
+        padding: 60px 30px 30px;
+    }
+}
+
+      /* ============================
+   PROFILE PAGE STYLES ONLY
+   ============================ */
+
+.profile-container {
+    padding-top: 120px;
+    padding-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: transparent; /* FIXED */
+}
+
+.profile-card {
+    background: #FFFFFF;
+    border-radius: 22px;
+    padding: 60px 60px 50px;
+    width: 100%;
+    max-width: 650px;
+    box-shadow: 0 14px 30px rgba(0,0,0,0.08);
+    position: relative;
+    margin-top: 80px;
+}
+
+/* Avatar */
+.profile-avatar {
+    position: absolute;
+    top: -55px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: #B7B7B7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+.avatar-edit {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: #5A6B4F;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 3px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Text */
+.profile-name {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.profile-name h2 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #333;
+}
+
+.profile-email {
+    text-align: center;
+    color: #777;
+    margin-bottom: 30px;
+}
+
+/* Forms */
+.profile-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px 40px; /* 🔥 jarak antar kolom & baris */
+    width: 100%;
+    margin-top: 30px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 15px;
+    font-weight: 600;
+    color: #3E4D37;
+    margin-bottom: 8px;
+}
+
+/* input & select style */
+.form-group input,
+.form-group select {
+    padding: 14px 18px;
+    background: #FCFCFC;
+    border-radius: 12px;
+    border: 1px solid #E4E4E4;
+    font-size: 15px;
+    color: #444;
+    transition: .25s;
+}
+
+/* focus */
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #C9CF5E;
+    box-shadow: 0 0 0 3px rgba(201, 207, 94, 0.25);
+}
+
+/* read-only state */
+.form-readonly input,
+.form-readonly select {
+    background: #F3F3F3;
+    color: #9A9A9A;
+}
+
+/* divider spacing */
+.form-divider {
+    grid-column: 1 / -1;
+    height: 1px;
+    background: #E2E2E2;
+    margin: 10px 0 20px;
+}
+
+/* beautify buttons */
+.btn-edit,
+.btn-save {
+    grid-column: 1 / -1;
+    margin-top: 10px;
+    padding: 16px 0;
+    background: linear-gradient(90deg, #E8ED9F, #D4D96F);
+    border-radius: 50px;
+    border: none;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: .3px;
+    color: #4A5D3F;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.btn-edit:hover,
+.btn-save:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 217, 111, 0.55);
+}
+
+/* extra spacing for the whole card */
+.profile-card {
+    padding: 70px 70px 60px;
+    margin-bottom: 70px; /* jarak ke achievement */
+}
+
+        .achievement-card {
+            background-color: #FFFFFF;
+            border-radius: 20px;
+            padding: 40px 60px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            max-width: 600px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .achievement-card h3 {
+            text-align: center;
+            font-size: 22px;
+            font-weight: 700;
+            color: #333333;
+            margin-bottom: 30px;
+        }
+
+        .achievement-badges {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .badge {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 45px;
+            position: relative;
+        }
+
+        .badge-gold {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .badge-pink {
+            background: linear-gradient(135deg, #FFB6C1 0%, #FFA0B4 100%);
+            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.4);
+        }
+
+        .badge-teal {
+            background: linear-gradient(135deg, #87CEEB 0%, #5FA8D3 100%);
+            box-shadow: 0 4px 15px rgba(135, 206, 235, 0.4);
+        }
+
+        .form-readonly input,
+        .form-readonly select {
+            background-color: #F9F9F9;
+            color: #999999;
+            cursor: not-allowed;
+        }
+
+        .alert {
+            padding: 12px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .alert-success {
+            background-color: #D4EDDA;
+            color: #155724;
+            border: 1px solid #C3E6CB;
+        }
+
+        .alert-error {
+            background-color: #F8D7DA;
+            color: #721C24;
+            border: 1px solid #F5C6CB;
+        }
+
+        @media (max-width: 768px) {
+            .profile-card,
+            .achievement-card {
+                padding: 40px 30px;
+                margin: 0 20px 30px;
+            }
+
+            .profile-form {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .achievement-badges {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .badge {
+                width: 80px;
+                height: 80px;
+                font-size: 35px;
+            }
+        }
+
+        /* === LOGOUT MODAL === */
+        .logout-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.45);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+        }
+
+        .logout-modal.active { display: flex; }
+
+        .logout-content {
+            background: #fff;
+            padding: 25px;
+            width: 320px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+        }
+
+        .logout-actions {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-cancel-logout,
+        .btn-confirm-logout {
+            flex: 1;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-cancel-logout { 
+            background: #eaeaea; 
+        }
+        .btn-confirm-logout { 
+            background: #FF6B6B; color: white; 
+        }
+
+/* Responsive */
+@media (max-width: 768px) {
+
+    .profile-card {
+        padding: 50px 30px;
+        margin: 0 20px;
+    }
+
+    .profile-form {
+        grid-template-columns: 1fr;
+    }
+}
+

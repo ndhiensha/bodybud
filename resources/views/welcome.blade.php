@@ -17,8 +17,8 @@
             <ul class="nav-menu">
                 <li><a href="{{ route('dashboard') }}">Home</a></li>
                 <li><a href="{{ route('myworkout') }}">My Workout</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#">progress</a></li>
+                <li><a href="#">profile</a></li>
             </ul>
         
             <div class="auth-buttons">
