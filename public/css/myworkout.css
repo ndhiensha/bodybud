@@ -585,6 +585,11 @@
                 grid-template-columns: 1fr;
             }
         }
+        
+    .content-wrapper {
+    padding: 0 120px;   /* sama seperti header */
+    margin-top: 40px;
+}
 
    
     .footer {

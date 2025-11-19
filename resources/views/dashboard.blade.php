@@ -77,63 +77,63 @@
         </div>
 
         <!-- WORKOUT CARDS -->
-        <div class="workout-section">
-            <div class="workout-grid">
-                <!-- ARM WORKOUT -->
-                <div class="workout-card card-arm">
-                    <div class="workout-image">
-                        <div class="workout-icons">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
-                            </svg>
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="workout-content">
-                        <h3 class="workout-title">ARM WORKOUT</h3>
-                        <button class="btn-details">Details</button>
-                    </div>
-                </div>
-
-                <!-- LEG WORKOUT -->
-                <div class="workout-card card-leg">
-                    <div class="workout-image">
-                        <div class="workout-icons">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                            </svg>
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="workout-content">
-                        <h3 class="workout-title">LEG WORKOUT</h3>
-                        <button class="btn-details">Details</button>
-                    </div>
-                </div>
-
-                <!-- BACK WORKOUT -->
-                <div class="workout-card card-back">
-                    <div class="workout-image">
-                        <div class="workout-icons">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                            </svg>
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="workout-content">
-                        <h3 class="workout-title">BACK WORKOUT</h3>
-                        <button class="btn-details">Details</button>
-                    </div>
+<div class="workout-section">
+    <div class="workout-grid">
+        <!-- ARM WORKOUT -->
+        <div class="workout-card card-arm">
+            <div class="workout-image">
+                <div class="workout-icons">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+                    </svg>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
+                    </svg>
                 </div>
             </div>
+            <div class="workout-content">
+                <h3 class="workout-title">ARM WORKOUT</h3>
+                <a href="{{ route('workouts.show', 'arm') }}" class="btn-details">Details</a>
+            </div>
         </div>
+
+        <!-- LEG WORKOUT -->
+        <div class="workout-card card-leg">
+            <div class="workout-image">
+                <div class="workout-icons">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="workout-content">
+                <h3 class="workout-title">LEG WORKOUT</h3>
+                <a href="{{ route('workouts.show', 'leg') }}" class="btn-details">Details</a>
+            </div>
+        </div>
+
+        <!-- BACK WORKOUT -->
+        <div class="workout-card card-back">
+            <div class="workout-image">
+                <div class="workout-icons">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                    </svg>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="workout-content">
+                <h3 class="workout-title">BACK WORKOUT</h3>
+                <a href="{{ route('workouts.show', 'back') }}" class="btn-details">Details</a>
+            </div>
+        </div>
+    </div>
+</div>
 
     </nav>
 

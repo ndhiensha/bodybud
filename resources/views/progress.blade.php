@@ -219,10 +219,10 @@
 
         <div class="footer-links">
             <h3>Menu</h3>
-            <a href="{{ route('welcome') }}">Home</a>
-            <a href="{{ route('dashboard') }}">Dashboard</a>
-            <a href="{{ route('myworkout') }}">Workouts</a>
+            <a href="{{ route('dashboard') }}">Home</a>
+            <a href="{{ route('myworkout') }}">My Workouts</a>
             <a href="{{ route('progress') }}">Progress</a>
+            <a href="{{ route('profile') }}">Profile</a>
         </div>
 
         <div class="footer-links">

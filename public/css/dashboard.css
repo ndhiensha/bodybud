@@ -475,3 +475,28 @@
         font-size: 14px;
     }
 
+    /* NOTIFICATION PANEL STYLES */
+.notification-panel {
+    position: absolute;
+    top: 70px;
+    right: 100px;
+    width: 380px;
+    max-height: 500px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.notification-panel.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* ... (copy semua dari file dashboard_css_update) */

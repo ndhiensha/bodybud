@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('notifications', function (Blueprint $table) {
+        Schema::create('notifikasi', function (Blueprint $table) {
             $table->id('notification_id');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('judul');

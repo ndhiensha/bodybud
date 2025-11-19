@@ -11,7 +11,7 @@ class Notifikasi extends Model
     protected $table = 'notifications';
 
 
-    protected $primaryKey = 'notifikasi_id';
+    protected $primaryKey = 'notification_id';
 
     protected $fillable = [
         'user_id',

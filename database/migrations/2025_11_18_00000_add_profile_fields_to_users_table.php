@@ -6,59 +6,45 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            // Check if columns don't exist before adding them
-            if (!Schema::hasColumn('users', 'gender')) {
-                $table->enum('gender', ['male', 'female'])->nullable()->after('email');
-                
 
-            }
-            
             if (!Schema::hasColumn('users', 'dob')) {
-                $table->date('dob')->nullable()->after('gender');
+                $table->date('dob')->nullable();
             }
             
             if (!Schema::hasColumn('users', 'weight')) {
-                $table->decimal('weight', 5, 2)->nullable()->after('dob')->comment('Weight in kg');
+                $table->decimal('weight', 5, 2)->nullable()->comment('Weight in kg');
             }
             
             if (!Schema::hasColumn('users', 'height')) {
-                $table->decimal('height', 5, 2)->nullable()->after('weight')->comment('Height in cm');
+                $table->decimal('height', 5, 2)->nullable()->comment('Height in cm');
             }
             
             if (!Schema::hasColumn('users', 'phone')) {
-                $table->string('phone', 20)->nullable()->after('height');
+                $table->string('phone', 20)->nullable();
             }
-            
-            if (!Schema::hasColumn('users', 'address')) {
-                $table->text('address')->nullable()->after('phone');
-            }
+
+            // address sengaja dihapus dari migration ini
+            // karena sudah pernah dibuat sebelumnya
             
             if (!Schema::hasColumn('users', 'profile_picture')) {
-                $table->string('profile_picture')->nullable()->after('address');
+                $table->string('profile_picture')->nullable();
             }
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn([
-                'gender',
                 'dob',
                 'weight',
                 'height',
                 'phone',
-                'address',
                 'profile_picture'
+                // address TIDAK boleh di-drop karena tidak ditambah di file ini
             ]);
         });
     }

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>My Workout - BodyBud</title>
 
     <!-- CSS -->
@@ -84,18 +85,20 @@
 
 
         <!-- GRID -->
-        <div id="workoutGrid" class="workout-grid"></div>
+        <div class="content-wrapper">
+            <div id="workoutGrid" class="workout-grid"></div>
 
-        <!-- EMPTY STATE -->
-        <div id="emptyState" class="empty-state" style="display:none;">
-            <svg class="icon-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-            </svg>
-            <h3>Belum ada workout yang dijadwalkan</h3>
-            <p>Klik "Buat Workout Baru" untuk mulai planning!</p>
-        </div>
-    </div>
+                <!-- EMPTY STATE -->
+                <div id="emptyState" class="empty-state" style="display:none;">
+                    <svg class="icon-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                    </svg>
+                    <h3>Belum ada workout yang dijadwalkan</h3>
+                    <p>Klik "Buat Workout Baru" untuk mulai planning!</p>
+                </div>
+            </div>
+
 
         <!-- MODAL OVERLAY -->
     <div id="workoutModal" class="modal">
@@ -157,6 +160,7 @@
         </div>
 
     </div>
+</div>
     <footer class="footer">
         <div class="footer-container">
 
@@ -199,7 +203,7 @@
     </footer>
 
     <!-- SCRIPT -->
-    <script src="{{ asset('js/workout.js') }}"></script>
+    <script src="{{ asset('js/myworkout.js') }}"></script>
     
     <script src="{{ asset('js/footer.js') }}"></script>
 

@@ -6,22 +6,22 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up()
+    public function up(): void
     {
         Schema::create('workouts', function (Blueprint $table) {
-            $table->id('workout_id');
-            $table->string('workout_name', 100);
-            $table->string('kategori', 50);
-            $table->text('deskripsi')->nullable();
-            $table->integer('kalori');
-            $table->integer('durasi'); // dalam menit
-            $table->string('difficulty', 20)->default('Medium');
-            $table->integer('total_sets')->default(0);
+            $table->id();
+            $table->string('category'); // arm, leg, back
+            $table->string('name');
+            $table->text('description');
+            $table->integer('calories');
+            $table->integer('duration'); // dalam detik
+            $table->integer('repetitions');
+            $table->integer('step_order');
             $table->timestamps();
         });
     }
 
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('workouts');
     }

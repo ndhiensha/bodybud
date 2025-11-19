@@ -2,28 +2,27 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Workout extends Model
 {
-    use HasFactory;
-
-    protected $primaryKey = 'workout_id';
-
     protected $fillable = [
-        'workout_name',
-        'kategori',
-        'deskripsi',
-        'kalori',
-        'durasi',
-        'difficulty',
-        'total_sets',
+        'category',
+        'name',
+        'description',
+        'calories',
+        'duration',
+        'repetitions',
+        'step_order'
     ];
 
-    // Relationships
-    public function progresses()
+    public function getDurationInMinutesAttribute()
     {
-        return $this->hasMany(Progress::class, 'workout_id');
+        return ceil($this->duration / 60);
+    }
+
+    public function scopeByCategory($query, $category)
+    {
+        return $query->where('category', $category)->orderBy('step_order');
     }
 }
