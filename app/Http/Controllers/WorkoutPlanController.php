@@ -1,38 +1,27 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Notifikasi;
+use App\Models\Notifications;
 use App\Models\WorkoutPlan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class WorkoutPlanController extends Controller
 {
-    /**
-     * Display a listing of the user's workout plans
-     * 
-     * @return \Illuminate\View\View
-     */
     public function index()
-    {
-        // Get all workout plans for authenticated user, sorted by date
-        $workouts = WorkoutPlan::where('user_id', Auth::id())
-            ->orderBy('workout_date', 'asc')
-            ->get();
+{
+    $workouts = WorkoutPlan::where('user_id', Auth::id())
+        ->orderBy('workout_date', 'asc')
+        ->get();
 
-        // Get unread notifications count (if you have notification system)
-        $unread = Notifikasi::where('user_id', Auth::id())
+    $unread = Notifications::where('user_id', Auth::id())
         ->where('status', 'ditunda')
         ->count();
 
-
-        return view('myworkout', compact('workouts', 'unread'));
-    }
-
-    /**
-     * Display a specific workout plan
-     * 
-     * @param int $id
+    return view('myworkout', compact('workouts', 'unread'));
+}
+    /*
+     * @param int 
      * @return \Illuminate\Http\JsonResponse
      */
     public function show($id)
@@ -55,8 +44,6 @@ class WorkoutPlanController extends Controller
     }
 
     /**
-     * Get workouts as JSON for AJAX requests
-     * 
      * @return \Illuminate\Http\JsonResponse
      */
     public function getWorkouts()

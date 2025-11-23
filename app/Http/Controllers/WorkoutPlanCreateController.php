@@ -16,18 +16,11 @@ class WorkoutPlanCreateController extends Controller
     private const ALLOWED_WORKOUT_TYPES = [
         'Arm Workout',
         'Leg Workout',
-        'Back Workout',
-        'Core Workout',
-        'Cardio',
-        'Full Body',
+        'Back Workout'
     ];
 
-    /**
-     * Store a newly created workout plan
-     */
     public function store(Request $request)
     {
-        // Validate input
         $validator = Validator::make($request->all(), [
             'workout_date' => 'required|date|after_or_equal:today',
             'workout_type' => ['required', 'string', Rule::in(self::ALLOWED_WORKOUT_TYPES)],
@@ -52,11 +45,9 @@ class WorkoutPlanCreateController extends Controller
             ], 422);
         }
 
-        // Hanya data tervalidasi yang dipakai
         $data = $validator->validated();
         $userId = Auth::id();
 
-        // Check duplicate workout (type + date)
         $existingWorkout = WorkoutPlan::where('user_id', $userId)
             ->where('workout_date', $data['workout_date'])
             ->where('workout_type', $data['workout_type'])
@@ -68,8 +59,6 @@ class WorkoutPlanCreateController extends Controller
                 'message' => 'Kamu sudah punya workout ' . $data['workout_type'] . ' di tanggal ini!'
             ], 409);
         }
-
-        // Create workout
         $workout = WorkoutPlan::create([
             'user_id'       => $userId,
             'workout_date'  => $data['workout_date'],
@@ -84,29 +73,5 @@ class WorkoutPlanCreateController extends Controller
             'message' => 'Workout berhasil ditambahkan!',
             'data'    => $workout,
         ], 201);
-    }
-
-    /**
-     * Validate data only (optional)
-     */
-    public function validateWorkout(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'workout_date' => 'required|date|after_or_equal:today',
-            'workout_type' => 'required|string',
-            'duration'     => 'required|integer|min:1|max:300'
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'errors'  => $validator->errors(),
-            ], 422);
-        }
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Validation passed'
-        ]);
     }
 }
