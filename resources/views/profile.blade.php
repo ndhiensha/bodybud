@@ -6,6 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Profile - Bodybud</title>
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/badge.css') }}">
 </head>
 <body>
     <div class="container">
@@ -216,9 +217,7 @@
     <script src="{{ asset('js/profile.js') }}"></script>
     <script src="{{ asset('js/footer.js') }}"></script>
 
-    <!-- Tambahkan di bagian Achievement Section di profile page Anda -->
-
-<!-- Achievement Section (Update yang sudah ada) -->
+    <!-- Achievement Section -->
 <div class="achievement-section">
     <div class="section-header">
         <h2>Achievement</h2>
@@ -230,9 +229,8 @@
         </button>
     </div>
     
-    <!-- Container untuk menampilkan badge yang dipilih (3 badge) -->
     <div class="achievement-container">
-        <!-- Badge akan di-render oleh JavaScript -->
+        <!-- Badge akan muncul di sini -->
         <div class="achievement-badge">
             <div class="badge-icon-large">🏆</div>
         </div>
@@ -245,7 +243,7 @@
     </div>
 </div>
 
-<!-- Badge Modal -->
+<!-- Badge Modal - Tambahkan sebelum </body> -->
 <div id="badgeModal" class="modal badge-modal">
     <div class="modal-content badge-modal-content">
         <div class="modal-header">
@@ -259,26 +257,14 @@
                 Complete more workouts to unlock new badges!
             </p>
             
-            <!-- Category Tabs -->
             <div class="badge-category-tabs">
-                <button class="badge-tab active" onclick="filterBadgeCategory('all')">
-                    All Badges
-                </button>
-                <button class="badge-tab" onclick="filterBadgeCategory('arms')">
-                    💪 Arms
-                </button>
-                <button class="badge-tab" onclick="filterBadgeCategory('legs')">
-                    🦵 Legs
-                </button>
-                <button class="badge-tab" onclick="filterBadgeCategory('abs')">
-                    🔥 Abs
-                </button>
+                <button class="badge-tab active" onclick="filterBadgeCategory('all')">All Badges</button>
+                <button class="badge-tab" onclick="filterBadgeCategory('arms')">💪 Arms</button>
+                <button class="badge-tab" onclick="filterBadgeCategory('legs')">🦵 Legs</button>
+                <button class="badge-tab" onclick="filterBadgeCategory('abs')">🔥 Abs</button>
             </div>
             
-            <!-- Badge Collection Container -->
-            <div id="badgeCollection" class="badge-collection">
-                <!-- Badges akan di-render oleh JavaScript -->
-            </div>
+            <div id="badgeCollection" class="badge-collection"></div>
         </div>
         
         <div class="modal-footer">
@@ -287,8 +273,6 @@
     </div>
 </div>
 
-<!-- Badge Unlock Notification (akan muncul otomatis saat unlock badge) -->
-<!-- Tidak perlu ditambahkan di HTML, akan dibuat oleh JavaScript -->
 </body>
 </html>
 
