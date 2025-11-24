@@ -121,7 +121,7 @@
                 <select id="workoutType">
                     <option value="Arm Workout">Arm Workout</option>
                     <option value="Leg Workout">Leg Workout</option>
-                    <option value="Back Workout">Back Workout</option>
+                    <option value="Abs Workout">Abs Workout</option>
                 </select>
             </div>
 

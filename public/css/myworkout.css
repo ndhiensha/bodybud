@@ -283,7 +283,7 @@
 
         .type-arm { background: #FFB3B3; border-left-color: #FFB3B3; }
         .type-leg { background: #B3D9FF; border-left-color: #B3D9FF; }
-        .type-back { background: #D4C878; border-left-color: #D4C878; }
+        .type-abs { background: #D4C878; border-left-color: #D4C878; }
 
         .workout-date {
             font-size: 18px;

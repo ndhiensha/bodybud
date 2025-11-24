@@ -1,311 +1,261 @@
 * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-
-            /* 🌈 Gradient sekarang MENUTUPI seluruh halaman */
-            background: linear-gradient(
-                to bottom,
-                #FFF8F0 0%, 
-                #FFF4EB 20%,   
-                #F7D9CF 55%,    
-                #F1B9A7 80%,
-                #E7A693 100%
-            );
-
-            background-attachment: fixed; /* 🌟 KUNCI: scroll tetap rapih */
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-
-
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 50px; 
-            background: linear-gradient(90deg, #D4D96F 0%, #C9CF5E 100%);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .navbar.scrolled {
-            padding: 12px 50px;
-            background: linear-gradient(90deg, #C9CF5E 0%, #BEC555 100%);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-        }
-
-        /* LEFT: LOGO */
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo-img {
-            width: 42px;
-        }
-
-        .logo-text {
-            font-size: 22px;
-            font-weight: 700;
-            color: #4A5D3F;
-            text-decoration: none;
-        }
-
-        /* CENTER: MENU */
-        .nav-menu {
-            display: flex;
-            gap: 45px;
-            list-style: none;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            font-size: 16px;
-            color: #4A5D3F;
-            font-weight: 600;
-        }
-
-        .nav-menu a:hover,
-        .nav-menu .active {
-            color: #2F3C24;
-        }
-
-        /* RIGHT: ICONS & USER */
-        .nav-icons {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .icon-btn {
-            background: none;            /* remove white box */
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: .2s;
-        }
-
-        .icon-btn:hover {
-            transform: scale(1.1);
-        }
-
-        .notif-badge {
-            position: absolute;
-            top: -4px;
-            right: -4px;
-            background: #FF6B6B;
-            padding: 2px 6px;
-            border-radius: 50%;
-            color: white;
-            font-size: 10px;
-            font-weight: bold;
-        }
-
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 6px 14px;
-            background: rgba(255, 255, 255, 0.35);
-            border-radius: 14px;
-        }
-
-        .user-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .user-name {
-            font-size: 15px;
-            font-weight: 600;
-            color: #3E4D37;
-        }
-
-        .icon-btn {
-            background: rgba(255, 255, 255, 0.5);
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            cursor: pointer;
-            color: #4A5D3F;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.25s;
-            position: relative;
-        }
-
-        .icon-btn:hover {
-            background: white;
-            transform: scale(1.05);
-        }
-
-        .icon-btn svg {
-            width: 22px;
-            height: 22px;
-        }
-
-        .notif-badge {
-            position: absolute;
-            top: -4px;
-            right: -4px;
-            background: #FF6B6B;
-            color: white;
-            font-size: 10px;
-            font-weight: 700;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-.footer {
-        margin-top: 120px;
-        background: linear-gradient(180deg, #FFFFFF 0%, #FFF2E8 100%);
-        padding: 60px 120px 30px;
-        border-top: 4px solid #E7A693;
-        box-shadow: 0 -6px 20px rgba(0,0,0,0.08);
-    }
-
-    .footer-container {
-        display: flex;
-        justify-content: space-between;
-        gap: 50px;
-        flex-wrap: wrap;
-    }
-
-    .footer-left h2 {
-        font-size: 28px;
-        font-weight: 800;
-        color: #4A5D3F;
-        margin-bottom: 12px;
-    }
-
-    .footer-left p {
-        max-width: 350px;
-        color: #6A7A5C;
-        font-size: 15px;
-        line-height: 1.6;
-    }
-
-    .footer-links h3,
-    .footer-social h3 {
-        font-size: 18px;
-        font-weight: 700;
-        margin-bottom: 14px;
-        color: #3E4D37;
-    }
-
-    .footer-links a {
-        display: block;
-        font-size: 15px;
-        margin-bottom: 8px;
-        color: #6A7A5C;
-        text-decoration: none;
-        transition: .25s;
-    }
-
-    .footer-links a:hover {
-        color: #3E4D37;
-        font-weight: 600;
-    }
-
-    .social-icons {
-        display: flex;
-        gap: 18px;
-        margin-top: 6px;
-    }
-
-    .social-icons a {
-        display: flex;
-        width: 38px;
-        height: 38px;
-        background: rgba(255, 255, 255, 0.6);
-        justify-content: center;
-        align-items: center;
-        border-radius: 12px;
-        transition: .25s;
-        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-    }
-
-    .social-icons a:hover {
-        background: white;
-        transform: translateY(-3px);
-    }
-
-    .footer-bottom {
-        margin-top: 40px;
-        text-align: center;
-        padding-top: 18px;
-        border-top: 1px solid #E7A693;
-    }
-
-    .footer-bottom p {
-        color: #6A7A5C;
-        font-size: 14px;
-    }
-
-
-/* ... (Gaya Footer lainnya tetap sama) ... */
-
-@media (max-width: 1024px) {
-    .navbar {
-        padding: 15px 20px;
-    }
-    .footer {
-        padding: 60px 30px 30px;
-    }
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-      /* ============================
-   PROFILE PAGE STYLES ONLY
-   ============================ */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    background: linear-gradient(
+        to bottom,
+        #FFF8F0 0%, 
+        #FFF4EB 20%,   
+        #F7D9CF 55%,    
+        #F1B9A7 80%,
+        #E7A693 100%
+    );
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px; 
+    background: linear-gradient(90deg, #D4D96F 0%, #C9CF5E 100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+    padding: 12px 50px;
+    background: linear-gradient(90deg, #C9CF5E 0%, #BEC555 100%);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-img {
+    width: 42px;
+}
+
+.logo-text {
+    font-size: 22px;
+    font-weight: 700;
+    color: #4A5D3F;
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 45px;
+    list-style: none;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #4A5D3F;
+    font-weight: 600;
+}
+
+.nav-menu a:hover,
+.nav-menu .active {
+    color: #2F3C24;
+}
+
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.icon-btn {
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #4A5D3F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s;
+    position: relative;
+}
+
+.icon-btn:hover {
+    background: white;
+    transform: scale(1.05);
+}
+
+.icon-btn svg {
+    width: 22px;
+    height: 22px;
+}
+
+.notif-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: #FF6B6B;
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 14px;
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #3E4D37;
+}
+
+/* FOOTER */
+.footer {
+    margin-top: 120px;
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFF2E8 100%);
+    padding: 60px 120px 30px;
+    border-top: 4px solid #E7A693;
+    box-shadow: 0 -6px 20px rgba(0,0,0,0.08);
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.footer-left h2 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #4A5D3F;
+    margin-bottom: 12px;
+}
+
+.footer-left p {
+    max-width: 350px;
+    color: #6A7A5C;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.footer-links h3,
+.footer-social h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: #3E4D37;
+}
+
+.footer-links a {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 8px;
+    color: #6A7A5C;
+    text-decoration: none;
+    transition: .25s;
+}
+
+.footer-links a:hover {
+    color: #3E4D37;
+    font-weight: 600;
+}
+
+.social-icons {
+    display: flex;
+    gap: 18px;
+    margin-top: 6px;
+}
+
+.social-icons a {
+    display: flex;
+    width: 38px;
+    height: 38px;
+    background: rgba(255, 255, 255, 0.6);
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    transition: .25s;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.social-icons a:hover {
+    background: white;
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    margin-top: 40px;
+    text-align: center;
+    padding-top: 18px;
+    border-top: 1px solid #E7A693;
+}
+
+.footer-bottom p {
+    color: #6A7A5C;
+    font-size: 14px;
+}
+
+/* PROFILE PAGE STYLES */
 .profile-container {
     padding-top: 120px;
     padding-bottom: 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: transparent; /* FIXED */
+    background-color: transparent;
 }
 
 .profile-card {
     background: #FFFFFF;
     border-radius: 22px;
-    padding: 60px 60px 50px;
+    padding: 70px 70px 50px;
     width: 100%;
     max-width: 650px;
     box-shadow: 0 14px 30px rgba(0,0,0,0.08);
     position: relative;
     margin-top: 80px;
+    margin-bottom: 40px;
 }
 
-/* Avatar */
 .profile-avatar {
     position: absolute;
     top: -55px;
@@ -336,7 +286,6 @@
     cursor: pointer;
 }
 
-/* Text */
 .profile-name {
     text-align: center;
     margin-top: 20px;
@@ -354,11 +303,10 @@
     margin-bottom: 30px;
 }
 
-/* Forms */
 .profile-form {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 30px 40px; /* 🔥 jarak antar kolom & baris */
+    gap: 30px 40px;
     width: 100%;
     margin-top: 30px;
 }
@@ -375,7 +323,6 @@
     margin-bottom: 8px;
 }
 
-/* input & select style */
 .form-group input,
 .form-group select {
     padding: 14px 18px;
@@ -387,21 +334,18 @@
     transition: .25s;
 }
 
-/* focus */
 .form-group input:focus,
 .form-group select:focus {
     border-color: #C9CF5E;
     box-shadow: 0 0 0 3px rgba(201, 207, 94, 0.25);
 }
 
-/* read-only state */
 .form-readonly input,
 .form-readonly select {
     background: #F3F3F3;
     color: #9A9A9A;
 }
 
-/* divider spacing */
 .form-divider {
     grid-column: 1 / -1;
     height: 1px;
@@ -409,7 +353,6 @@
     margin: 10px 0 20px;
 }
 
-/* beautify buttons */
 .btn-edit,
 .btn-save {
     grid-column: 1 / -1;
@@ -432,494 +375,217 @@
     box-shadow: 0 6px 20px rgba(212, 217, 111, 0.55);
 }
 
-/* extra spacing for the whole card */
-.profile-card {
-    padding: 70px 70px 60px;
-    margin-bottom: 70px; /* jarak ke achievement */
+.alert {
+    padding: 12px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    text-align: center;
 }
 
-        .achievement-card {
-            background-color: #FFFFFF;
-            border-radius: 20px;
-            padding: 40px 60px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            max-width: 600px;
-            width: 100%;
-            margin-top: 20px;
-        }
-
-        .achievement-card h3 {
-            text-align: center;
-            font-size: 22px;
-            font-weight: 700;
-            color: #333333;
-            margin-bottom: 30px;
-        }
-
-        .achievement-badges {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            gap: 30px;
-        }
-
-        .badge {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 45px;
-            position: relative;
-        }
-
-        .badge-gold {
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
-        }
-
-        .badge-pink {
-            background: linear-gradient(135deg, #FFB6C1 0%, #FFA0B4 100%);
-            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.4);
-        }
-
-        .badge-teal {
-            background: linear-gradient(135deg, #87CEEB 0%, #5FA8D3 100%);
-            box-shadow: 0 4px 15px rgba(135, 206, 235, 0.4);
-        }
-
-        .form-readonly input,
-        .form-readonly select {
-            background-color: #F9F9F9;
-            color: #999999;
-            cursor: not-allowed;
-        }
-
-        .alert {
-            padding: 12px 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            font-size: 14px;
-            text-align: center;
-        }
-
-        .alert-success {
-            background-color: #D4EDDA;
-            color: #155724;
-            border: 1px solid #C3E6CB;
-        }
-
-        .alert-error {
-            background-color: #F8D7DA;
-            color: #721C24;
-            border: 1px solid #F5C6CB;
-        }
-
-        @media (max-width: 768px) {
-            .profile-card,
-            .achievement-card {
-                padding: 40px 30px;
-                margin: 0 20px 30px;
-            }
-
-            .profile-form {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .achievement-badges {
-                flex-wrap: wrap;
-                gap: 20px;
-            }
-
-            .badge {
-                width: 80px;
-                height: 80px;
-                font-size: 35px;
-            }
-        }
-
-        /* === LOGOUT MODAL === */
-        .logout-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.45);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 99999;
-        }
-
-        .logout-modal.active { display: flex; }
-
-        .logout-content {
-            background: #fff;
-            padding: 25px;
-            width: 320px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-        }
-
-        .logout-actions {
-            margin-top: 20px;
-            display: flex;
-            gap: 10px;
-        }
-
-        .btn-cancel-logout,
-        .btn-confirm-logout {
-            flex: 1;
-            padding: 12px;
-            border-radius: 10px;
-            border: none;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .btn-cancel-logout { 
-            background: #eaeaea; 
-        }
-        .btn-confirm-logout { 
-            background: #FF6B6B; color: white; 
-        }
-
-/* Responsive */
-@media (max-width: 768px) {
-
-    .profile-card {
-        padding: 50px 30px;
-        margin: 0 20px;
-    }
-
-    .profile-form {
-        grid-template-columns: 1fr;
-    }
+.alert-success {
+    background-color: #D4EDDA;
+    color: #155724;
+    border: 1px solid #C3E6CB;
 }
 
+.alert-error {
+    background-color: #F8D7DA;
+    color: #721C24;
+    border: 1px solid #F5C6CB;
+}
+
+/* LOGOUT MODAL */
+.logout-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.45);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+.logout-modal.active { 
+    display: flex; 
+}
+
+.logout-content {
+    background: #fff;
+    padding: 25px;
+    width: 320px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+}
+
+.logout-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn-cancel-logout,
+.btn-confirm-logout {
+    flex: 1;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-cancel-logout { 
+    background: #eaeaea; 
+}
+
+.btn-confirm-logout { 
+    background: #FF6B6B; 
+    color: white; 
+}
 
 /* ============================================
-   BADGE SYSTEM STYLES - MULAI DARI SINI
-   ============================================ */
+   BADGE SYSTEM - DIRECT DISPLAY (NO MODAL)
+============================================ */
 
-/* Achievement Section */
-.achievement-section {
-    background: white;
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 30px;
-    max-width: 650px;
-    width: 100%;
+.achievement-section-inner {
+    grid-column: 1 / -1;
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 2px solid #F0F0F0;
 }
 
 .section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 .section-header h2 {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 600;
     color: #333;
     margin: 0;
 }
 
-.btn-manage-badges {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 20px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.btn-manage-badges:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-}
-
 .achievement-container {
     display: flex;
-    gap: 20px;
+    gap: 30px;
     justify-content: center;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .achievement-badge {
-    width: 120px;
-    height: 120px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     position: relative;
-    overflow: hidden;
-}
-
-.achievement-badge::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 50%;
-    padding: 3px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
 .achievement-badge.beginner {
-    background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
 }
 
 .achievement-badge.intermediate {
-    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    background: linear-gradient(135deg, #FFB6C1 0%, #FF69B4 100%);
 }
 
 .achievement-badge.advanced {
-    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    background: linear-gradient(135deg, #87CEEB 0%, #4682B4 100%);
+}
+
+.achievement-badge.locked {
+    background: linear-gradient(135deg, #E0E0E0 0%, #BDBDBD 100%);
+    opacity: 0.7;
 }
 
 .achievement-badge:hover {
     transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
 }
 
 .badge-icon-large {
-    font-size: 48px;
-    margin-bottom: 5px;
+    font-size: 60px;
+    margin-bottom: 8px;
+     position: relative;  /* ⭐ TAMBAHKAN INI */
+    width: 70px;         /* ⭐ TAMBAHKAN INI */
+    height: 70px;        /* ⭐ TAMBAHKAN INI */
+    display: flex;       /* ⭐ TAMBAHKAN INI */
+    align-items: center; /* ⭐ TAMBAHKAN INI */
+    justify-content: center;
+}
+
+.badge-main-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+.lock-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 45px;
+    z-index: 10;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    animation: lockPulse 2s ease-in-out infinite;
+}
+
+/* Animasi gembok */
+@keyframes lockPulse {
+    0%, 100% { 
+        transform: translate(-50%, -50%) scale(1); 
+    }
+    50% { 
+        transform: translate(-50%, -50%) scale(1.1); 
+    }
+}
+
+.achievement-badge.locked .badge-main-icon {
+    opacity: 0.4;
+    filter: grayscale(60%);
+}
+
+/* Badge unlocked - icon cerah */
+.achievement-badge:not(.locked) .badge-main-icon {
+    opacity: 1;
+    filter: grayscale(0%);
+}
+
+/* Hover effect pada unlocked badge */
+.achievement-badge:not(.locked):hover .badge-main-icon {
+    transform: scale(1.1) rotate(5deg);
 }
 
 .badge-label {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     color: #333;
     text-align: center;
-    padding: 0 10px;
-}
-
-/* Badge Modal */
-.badge-modal .modal-content {
-    max-width: 800px;
-    width: 90%;
-    max-height: 90vh;
-    overflow-y: auto;
-}
-
-.badge-modal-content {
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-}
-
-.modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 25px 30px;
-    border-bottom: 1px solid #eee;
-}
-
-.modal-header h2 {
-    margin: 0;
-    font-size: 24px;
-    font-weight: 600;
-    color: #333;
-}
-
-.modal-close {
-    background: none;
-    border: none;
-    font-size: 32px;
-    color: #999;
-    cursor: pointer;
-    line-height: 1;
-    transition: color 0.3s ease;
-}
-
-.modal-close:hover {
-    color: #333;
-}
-
-.modal-body {
-    padding: 30px;
-}
-
-.badge-instruction {
-    text-align: center;
-    color: #666;
-    margin-bottom: 25px;
-    font-size: 14px;
-    line-height: 1.6;
-}
-
-/* Category Tabs */
-.badge-category-tabs {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.badge-tab {
-    padding: 10px 20px;
-    border: 2px solid #e0e0e0;
-    background: white;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 500;
-    color: #666;
-    transition: all 0.3s ease;
-}
-
-.badge-tab:hover {
-    border-color: #667eea;
-    color: #667eea;
-}
-
-.badge-tab.active {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border-color: transparent;
-}
-
-/* Badge Grid */
-.badge-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 20px;
-}
-
-.badge-item {
-    background: white;
-    border: 2px solid #e0e0e0;
-    border-radius: 15px;
-    padding: 20px;
-    text-align: center;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    position: relative;
-}
-
-.badge-item.locked {
-    opacity: 0.5;
-    cursor: not-allowed;
-    background: #f5f5f5;
-}
-
-.badge-item.unlocked:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    border-color: #667eea;
-}
-
-.badge-item.selected {
-    border-color: #667eea;
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-}
-
-.badge-item.selected .badge-checkmark {
-    display: block;
-}
-
-.badge-icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 15px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 40px;
-    transition: all 0.3s ease;
-}
-
-.badge-icon.beginner {
-    background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
-}
-
-.badge-icon.intermediate {
-    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-}
-
-.badge-icon.advanced {
-    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-}
-
-.badge-item.locked .badge-icon {
-    background: #ddd;
-}
-
-.badge-name {
-    font-size: 14px;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 8px;
+    margin-top: 5px;
 }
 
 .badge-progress {
-    font-size: 12px;
+    font-size: 11px;
     color: #666;
-}
-
-.badge-checkmark {
-    display: none;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 30px;
-    height: 30px;
-    background: #4CAF50;
-    color: white;
-    border-radius: 50%;
-    font-size: 18px;
-    line-height: 30px;
+    margin-top: 3px;
     text-align: center;
 }
 
-/* Modal Footer */
-.modal-footer {
-    padding: 20px 30px;
-    border-top: 1px solid #eee;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.btn-secondary {
-    padding: 12px 30px;
-    background: #f0f0f0;
-    color: #333;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.btn-secondary:hover {
-    background: #e0e0e0;
+.achievement-badge.locked .badge-label,
+.achievement-badge.locked .badge-progress {
+    color: #999;
 }
 
 /* Badge Unlock Notification */
@@ -964,70 +630,45 @@
     color: #666;
 }
 
-/* Modal Base Styles */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+    .footer {
+        padding: 60px 30px 30px;
+    }
 }
 
-.modal.active {
-    display: flex;
-}
-
-/* Responsive Design for Badge System */
 @media (max-width: 768px) {
-    .badge-grid {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-        gap: 15px;
+    .profile-card {
+        padding: 50px 30px;
+        margin: 0 20px;
     }
-    
-    .badge-item {
-        padding: 15px;
+
+    .profile-form {
+        grid-template-columns: 1fr;
     }
-    
-    .badge-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 30px;
-    }
-    
+
     .achievement-badge {
-        width: 100px;
-        height: 100px;
+        width: 110px;
+        height: 110px;
     }
-    
+
     .badge-icon-large {
-        font-size: 36px;
+        font-size: 48px;
     }
-    
-    .badge-category-tabs {
-        gap: 8px;
+
+    .badge-label {
+        font-size: 11px;
     }
-    
-    .badge-tab {
-        padding: 8px 15px;
-        font-size: 13px;
-    }
-    
+
     .badge-unlock-notification {
         right: -350px;
         max-width: 300px;
     }
-    
+
     .badge-unlock-notification.show {
         right: 15px;
-    }
-    
-    .achievement-section {
-        padding: 20px;
-        margin: 20px;
     }
 }

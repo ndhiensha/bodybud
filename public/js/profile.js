@@ -1,14 +1,13 @@
 // profile.js - Main Profile Functionality
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all profile functions
     initProfilePictureUpload();
     initAlerts();
     initFormValidation();
     initDateInput();
     initNavbarScroll();
     initLogoutModal();
-    initBadgeSystem(); // <-- TAMBAHAN UNTUK BADGE SYSTEM
+    initBadgeSystem();
 });
 
 // Profile Picture Upload
@@ -19,14 +18,12 @@ function initProfilePictureUpload() {
         profilePictureInput.addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (file) {
-                // Validate file type
                 const validTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif'];
                 if (!validTypes.includes(file.type)) {
                     alert('Please upload a valid image file (JPEG, PNG, GIF)');
                     return;
                 }
 
-                // Validate file size (max 2MB)
                 if (file.size > 2 * 1024 * 1024) {
                     alert('File size must be less than 2MB');
                     return;
@@ -37,7 +34,6 @@ function initProfilePictureUpload() {
                     const avatarPreview = document.querySelector('.profile-avatar');
                     
                     if (avatarPreview) {
-                        // Create new img element
                         const img = document.createElement('img');
                         img.src = e.target.result;
                         img.alt = 'Profile Picture';
@@ -46,11 +42,9 @@ function initProfilePictureUpload() {
                         img.style.objectFit = 'cover';
                         img.style.borderRadius = '50%';
                         
-                        // Clear existing content and add new image
                         avatarPreview.innerHTML = '';
                         avatarPreview.appendChild(img);
                         
-                        // Re-add edit button
                         const editBtn = document.createElement('div');
                         editBtn.className = 'avatar-edit';
                         editBtn.innerHTML = `
@@ -66,7 +60,6 @@ function initProfilePictureUpload() {
         });
     }
 
-    // Add click event to avatar edit button
     const avatarEdit = document.querySelector('.avatar-edit');
     if (avatarEdit) {
         avatarEdit.addEventListener('click', function() {
@@ -81,7 +74,6 @@ function initProfilePictureUpload() {
 function initAlerts() {
     const alerts = document.querySelectorAll('.alert-success, .alert-error');
     
-    // Add slideOut animation style
     const style = document.createElement('style');
     style.textContent = `
         @keyframes slideOut {
@@ -115,7 +107,6 @@ function initFormValidation() {
             const height = document.querySelector('input[name="height"]');
             const phone = document.querySelector('input[name="phone"]');
             
-            // Validate weight
             if (weight && weight.value) {
                 const weightValue = parseFloat(weight.value);
                 if (isNaN(weightValue) || weightValue <= 0) {
@@ -126,7 +117,6 @@ function initFormValidation() {
                 }
             }
             
-            // Validate height
             if (height && height.value) {
                 const heightValue = parseFloat(height.value);
                 if (isNaN(heightValue) || heightValue <= 0) {
@@ -137,7 +127,6 @@ function initFormValidation() {
                 }
             }
 
-            // Validate phone number
             if (phone && phone.value) {
                 const phonePattern = /^[0-9\-\+\s()]+$/;
                 if (!phonePattern.test(phone.value)) {
@@ -155,7 +144,6 @@ function initFormValidation() {
 function initDateInput() {
     const dateInput = document.querySelector('input[name="dob"]');
     if (dateInput) {
-        // Set max date to today (can't be born in the future)
         const today = new Date().toISOString().split('T')[0];
         dateInput.setAttribute('max', today);
     }
@@ -212,317 +200,154 @@ function toggleEdit() {
     const btnSave = document.getElementById('btnSave');
     const formGroups = document.querySelectorAll('.form-group');
 
-    // Enable all form fields
     formFields.forEach(field => {
         field.disabled = false;
         field.classList.add('editable');
     });
 
-    // Remove readonly class from form groups
     formGroups.forEach(group => {
         group.classList.remove('form-readonly');
         group.classList.add('form-editable');
     });
 
-    // Toggle buttons
     if (btnEdit) btnEdit.style.display = 'none';
     if (btnSave) btnSave.style.display = 'block';
 }
 
-// Cancel Edit (optional function to revert changes)
+// Cancel Edit
 function cancelEdit() {
     const formFields = document.querySelectorAll('#profileFormFields input, #profileFormFields select');
     const btnEdit = document.getElementById('btnEdit');
     const btnSave = document.getElementById('btnSave');
     const formGroups = document.querySelectorAll('.form-group');
 
-    // Disable all form fields
     formFields.forEach(field => {
         field.disabled = true;
         field.classList.remove('editable');
     });
 
-    // Add readonly class back to form groups
     formGroups.forEach(group => {
         group.classList.add('form-readonly');
         group.classList.remove('form-editable');
     });
 
-    // Toggle buttons
     if (btnEdit) btnEdit.style.display = 'block';
     if (btnSave) btnSave.style.display = 'none';
     
-    // Reload page to reset form values
     location.reload();
 }
 
 // ============================================
-// BADGE SYSTEM - MULAI DARI SINI
+// SIMPLIFIED BADGE SYSTEM - 3 FIXED BADGES
 // ============================================
 
-// Badge Configuration
 const BADGE_CONFIG = {
-    // Arms workouts
-    'push_up': {
-        name: 'Push Up Master',
-        category: 'arms',
-        icon: '💪',
-        levels: {
-            beginner: { count: 50, name: 'Push Up Starter' },
-            intermediate: { count: 200, name: 'Push Up Pro' },
-            advanced: { count: 500, name: 'Push Up Legend' }
-        }
+    beginner: { 
+        count: 25, 
+        name: 'Beginner',
+        icon: '/images/beginner.svg',  // ⭐ Path ke file SVG
+        color: 'beginner'
     },
-    'bicep_curls': {
-        name: 'Bicep Builder',
-        category: 'arms',
-        icon: '💪',
-        levels: {
-            beginner: { count: 50, name: 'Bicep Starter' },
-            intermediate: { count: 200, name: 'Bicep Pro' },
-            advanced: { count: 500, name: 'Bicep Legend' }
-        }
+    intermediate: { 
+        count: 50, 
+        name: 'Intermediate',
+        icon: '/images/intermediete.svg',  // ⭐ Path ke file SVG
+        color: 'intermediate'
     },
-    'tricep_dips': {
-        name: 'Tricep Champion',
-        category: 'arms',
-        icon: '💪',
-        levels: {
-            beginner: { count: 50, name: 'Tricep Starter' },
-            intermediate: { count: 200, name: 'Tricep Pro' },
-            advanced: { count: 500, name: 'Tricep Legend' }
-        }
-    },
-    // Legs workouts
-    'squats': {
-        name: 'Squat Master',
-        category: 'legs',
-        icon: '🦵',
-        levels: {
-            beginner: { count: 50, name: 'Squat Starter' },
-            intermediate: { count: 200, name: 'Squat Pro' },
-            advanced: { count: 500, name: 'Squat Legend' }
-        }
-    },
-    'lunges': {
-        name: 'Lunge Champion',
-        category: 'legs',
-        icon: '🦵',
-        levels: {
-            beginner: { count: 50, name: 'Lunge Starter' },
-            intermediate: { count: 200, name: 'Lunge Pro' },
-            advanced: { count: 500, name: 'Lunge Legend' }
-        }
-    },
-    // Abs workouts
-    'crunches': {
-        name: 'Crunch Master',
-        category: 'abs',
-        icon: '🔥',
-        levels: {
-            beginner: { count: 50, name: 'Crunch Starter' },
-            intermediate: { count: 200, name: 'Crunch Pro' },
-            advanced: { count: 500, name: 'Crunch Legend' }
-        }
-    },
-    'plank': {
-        name: 'Plank Champion',
-        category: 'abs',
-        icon: '🔥',
-        levels: {
-            beginner: { count: 300, name: 'Plank Starter' }, // in seconds (5 minutes)
-            intermediate: { count: 1200, name: 'Plank Pro' }, // 20 minutes
-            advanced: { count: 3000, name: 'Plank Legend' } // 50 minutes
-        }
+    advanced: { 
+        count: 100, 
+        name: 'Advanced',
+        icon: '/images/advanced.svg',  // ⭐ Path ke file SVG
+        color: 'advanced'
     }
 };
 
 // Initialize Badge System
 function initBadgeSystem() {
-    loadBadgeProgress();
-    renderBadgeCollection();
-    loadDisplayedBadges();
+    syncBadgeProgressFromBackend();
+    renderBadges();
 }
 
-// Load badge progress from localStorage
-function loadBadgeProgress() {
-    const savedProgress = localStorage.getItem('badgeProgress');
-    if (!savedProgress) {
-        // Initialize with zero progress
-        const initialProgress = {};
-        Object.keys(BADGE_CONFIG).forEach(workout => {
-            initialProgress[workout] = 0;
-        });
-        localStorage.setItem('badgeProgress', JSON.stringify(initialProgress));
-    }
-}
-
-// Get current badge level for a workout
-function getBadgeLevel(workout, count) {
-    const config = BADGE_CONFIG[workout];
-    if (!config) return null;
-
-    if (count >= config.levels.advanced.count) {
-        return { level: 'advanced', ...config.levels.advanced };
-    } else if (count >= config.levels.intermediate.count) {
-        return { level: 'intermediate', ...config.levels.intermediate };
-    } else if (count >= config.levels.beginner.count) {
-        return { level: 'beginner', ...config.levels.beginner };
-    }
-    return null;
-}
-
-// Render badge collection (all badges including locked ones)
-function renderBadgeCollection() {
-    const badgeContainer = document.getElementById('badgeCollection');
-    if (!badgeContainer) return;
-
-    const progress = JSON.parse(localStorage.getItem('badgeProgress') || '{}');
-    let html = '<div class="badge-grid">';
-
-    Object.keys(BADGE_CONFIG).forEach(workout => {
-        const config = BADGE_CONFIG[workout];
-        const count = progress[workout] || 0;
-        const currentLevel = getBadgeLevel(workout, count);
-
-        // Show all three levels for each workout
-        ['beginner', 'intermediate', 'advanced'].forEach(level => {
-            const levelData = config.levels[level];
-            const isUnlocked = currentLevel && 
-                (level === 'beginner' && count >= levelData.count ||
-                 level === 'intermediate' && count >= levelData.count ||
-                 level === 'advanced' && count >= levelData.count);
-
-            html += `
-                <div class="badge-item ${isUnlocked ? 'unlocked' : 'locked'}" 
-                     data-workout="${workout}" 
-                     data-level="${level}"
-                     ${isUnlocked ? `onclick="toggleBadgeSelection('${workout}', '${level}')"` : ''}>
-                    <div class="badge-icon ${level}">
-                        ${isUnlocked ? config.icon : '🔒'}
-                    </div>
-                    <div class="badge-name">${levelData.name}</div>
-                    <div class="badge-progress">
-                        ${count} / ${levelData.count}
-                    </div>
-                    ${isUnlocked ? '<div class="badge-checkmark">✓</div>' : ''}
-                </div>
-            `;
-        });
-    });
-
-    html += '</div>';
-    badgeContainer.innerHTML = html;
-}
-
-// Toggle badge selection for display
-function toggleBadgeSelection(workout, level) {
-    const badgeKey = `${workout}_${level}`;
-    let displayedBadges = JSON.parse(localStorage.getItem('displayedBadges') || '[]');
-
-    const index = displayedBadges.indexOf(badgeKey);
+// Sync dengan data dari backend (progress.js)
+function syncBadgeProgressFromBackend() {
+    let totalCompleted = 0;
     
-    if (index > -1) {
-        // Remove badge
-        displayedBadges.splice(index, 1);
-    } else {
-        // Add badge (limit to 3 displayed badges)
-        if (displayedBadges.length >= 3) {
-            alert('You can only display up to 3 badges on your profile!');
-            return;
-        }
-        displayedBadges.push(badgeKey);
+    // Ambil data dari progress.js jika tersedia
+    if (typeof window.progressData !== 'undefined') {
+        const categories = window.progressData.categories;
+        
+        // Hitung total workout yang completed dari semua kategori
+        Object.keys(categories).forEach(category => {
+            totalCompleted += categories[category].completed || 0;
+        });
     }
-
-    localStorage.setItem('displayedBadges', JSON.stringify(displayedBadges));
-    updateBadgeSelectionUI();
-    updateProfileBadges();
+    
+    // Simpan total workout completed
+    localStorage.setItem('totalWorkoutsCompleted', totalCompleted.toString());
+    
+    return totalCompleted;
 }
 
-// Update badge selection UI
-function updateBadgeSelectionUI() {
-    const displayedBadges = JSON.parse(localStorage.getItem('displayedBadges') || '[]');
-    const allBadgeItems = document.querySelectorAll('.badge-item.unlocked');
-
-    allBadgeItems.forEach(item => {
-        const workout = item.getAttribute('data-workout');
-        const level = item.getAttribute('data-level');
-        const badgeKey = `${workout}_${level}`;
-
-        if (displayedBadges.includes(badgeKey)) {
-            item.classList.add('selected');
-        } else {
-            item.classList.remove('selected');
-        }
-    });
-}
-
-// Load and display selected badges on profile
-function loadDisplayedBadges() {
-    updateProfileBadges();
-}
-
-// Update profile badges display
-function updateProfileBadges() {
+// Render 3 badges langsung
+// Render 3 badges langsung
+function renderBadges() {
     const achievementContainer = document.querySelector('.achievement-container');
     if (!achievementContainer) return;
 
-    const displayedBadges = JSON.parse(localStorage.getItem('displayedBadges') || '[]');
+    // Ambil total workout completed
+    let totalCompleted = parseInt(localStorage.getItem('totalWorkoutsCompleted') || '0');
     
-    let html = '';
-    displayedBadges.forEach(badgeKey => {
-        const [workout, level] = badgeKey.split('_');
-        const config = BADGE_CONFIG[workout];
-        if (!config) return;
+    // Re-sync dari backend jika tersedia
+    if (typeof window.progressData !== 'undefined') {
+        totalCompleted = syncBadgeProgressFromBackend();
+    }
 
-        const levelData = config.levels[level];
+    let html = '';
+
+    // Render 3 badges: Beginner, Intermediate, Advanced
+    Object.keys(BADGE_CONFIG).forEach(level => {
+        const config = BADGE_CONFIG[level];
+        const isUnlocked = totalCompleted >= config.count;
+        
+        // ⭐ PERUBAHAN UTAMA DI SINI ⭐
         html += `
-            <div class="achievement-badge ${level}">
-                <div class="badge-icon-large">${config.icon}</div>
-                <div class="badge-label">${levelData.name}</div>
+            <div class="achievement-badge ${isUnlocked ? config.color : 'locked'}">
+                <div class="badge-icon-large">
+                    <img src="${config.icon}" alt="${config.name}" class="badge-main-icon">
+                    ${!isUnlocked ? '<div class="lock-overlay">🔒</div>' : ''}
+                </div>
+                <div class="badge-label">${config.name}</div>
+                <div class="badge-progress">${totalCompleted} / ${config.count} workouts</div>
             </div>
         `;
     });
 
-    // If no badges selected, show placeholder
-    if (html === '') {
-        html = `
-            <div class="achievement-badge">
-                <div class="badge-icon-large">🏆</div>
-            </div>
-            <div class="achievement-badge">
-                <div class="badge-icon-large">⭐</div>
-            </div>
-            <div class="achievement-badge">
-                <div class="badge-icon-large">🎖️</div>
-            </div>
-        `;
-    }
-
     achievementContainer.innerHTML = html;
+    
+    // Check for newly unlocked badges
+    checkBadgeUnlocks(totalCompleted);
 }
 
-// Update badge progress (call this when user completes a workout)
-function updateBadgeProgress(workout, increment = 1) {
-    const progress = JSON.parse(localStorage.getItem('badgeProgress') || '{}');
-    progress[workout] = (progress[workout] || 0) + increment;
-    localStorage.setItem('badgeProgress', JSON.stringify(progress));
-
-    // Check if new badge unlocked
-    const currentLevel = getBadgeLevel(workout, progress[workout]);
-    if (currentLevel) {
-        showBadgeUnlockNotification(workout, currentLevel);
-    }
-
-    // Re-render badge collection
-    renderBadgeCollection();
+// Check dan notify untuk badge yang baru unlock
+function checkBadgeUnlocks(totalCompleted) {
+    const lastChecked = parseInt(localStorage.getItem('lastBadgeCheck') || '0');
+    
+    // Cek apakah ada badge baru yang unlock
+    Object.keys(BADGE_CONFIG).forEach(level => {
+        const config = BADGE_CONFIG[level];
+        
+        // Jika baru mencapai threshold badge ini
+        if (totalCompleted >= config.count && lastChecked < config.count) {
+            showBadgeUnlockNotification(config);
+        }
+    });
+    
+    // Update last check
+    localStorage.setItem('lastBadgeCheck', totalCompleted.toString());
 }
 
 // Show badge unlock notification
-function showBadgeUnlockNotification(workout, levelData) {
-    const config = BADGE_CONFIG[workout];
-    
-    // Create notification element
+function showBadgeUnlockNotification(config) {
     const notification = document.createElement('div');
     notification.className = 'badge-unlock-notification';
     notification.innerHTML = `
@@ -530,63 +355,22 @@ function showBadgeUnlockNotification(workout, levelData) {
             <div class="notification-icon">${config.icon}</div>
             <div class="notification-text">
                 <h3>Badge Unlocked!</h3>
-                <p>${levelData.name}</p>
+                <p>${config.name} Achievement</p>
             </div>
         </div>
     `;
 
     document.body.appendChild(notification);
 
-    // Animate in
     setTimeout(() => notification.classList.add('show'), 100);
 
-    // Remove after 3 seconds
     setTimeout(() => {
         notification.classList.remove('show');
         setTimeout(() => notification.remove(), 300);
     }, 3000);
 }
 
-// Open badge modal
-function openBadgeModal() {
-    const modal = document.getElementById('badgeModal');
-    if (modal) {
-        modal.classList.add('active');
-        renderBadgeCollection();
-        updateBadgeSelectionUI();
-    }
-}
-
-// Close badge modal
-function closeBadgeModal() {
-    const modal = document.getElementById('badgeModal');
-    if (modal) {
-        modal.classList.remove('active');
-    }
-}
-
-// Filter badge by category
-function filterBadgeCategory(category) {
-    // Update active tab
-    const tabs = document.querySelectorAll('.badge-tab');
-    tabs.forEach(tab => tab.classList.remove('active'));
-    event.target.classList.add('active');
-
-    // Filter badges
-    const badgeItems = document.querySelectorAll('.badge-item');
-    badgeItems.forEach(item => {
-        const workout = item.getAttribute('data-workout');
-        const config = BADGE_CONFIG[workout];
-        
-        if (category === 'all' || config.category === category) {
-            item.style.display = 'block';
-        } else {
-            item.style.display = 'none';
-        }
-    });
-}
-
-// Example: Simulate workout completion (for testing)
-function simulateWorkout(workout) {
-    updateBadgeProgress(workout, 10);
+// Function untuk update badge dari halaman lain (dipanggil setelah workout selesai)
+function updateBadgeProgress() {
+    renderBadges();
 }

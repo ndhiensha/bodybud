@@ -6,7 +6,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Profile - Bodybud</title>
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/badge.css') }}">
 </head>
 <body>
     <div class="container">
@@ -16,7 +15,6 @@
                 <a href="#" class="logo-text">BodyBud</a>
             </div>
 
-            <!-- CENTER : MENU -->
             <ul class="nav-menu">
                 <li><a href="{{ route('dashboard') }}">Home</a></li>
                 <li><a href="{{ route('myworkout') }}">My Workout</a></li>
@@ -24,9 +22,7 @@
                 <li><a href="{{ route('profile') }}" class="active">Profile</a></li>
             </ul>
 
-            <!-- RIGHT : ICONS & USER -->
             <div class="nav-icons">
-                <!-- NOTIFICATION -->
                 <a class="icon-btn" id="notifBtn">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="23">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -37,7 +33,6 @@
                     @endif
                 </a>
 
-                <!-- User -->
                 <div class="user-info">
                     <div class="user-avatar">
                         @if($user->profile_picture)
@@ -49,7 +44,6 @@
                     <span class="user-name">{{ Auth::user()->name }}</span>
                 </div>
 
-                <!-- Logout -->
                 <button class="icon-btn" id="btnLogout">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="22">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -145,15 +139,31 @@
                         <button type="submit" class="btn-save" id="btnSave" style="display:none;">Save Changes</button>
                     </div>
                 </form>
-            </div>
 
-            <!-- Achievement Card -->
-            <div class="achievement-card">
-                <h3>Achievement</h3>
-                <div class="achievement-badges">
-                    <div class="badge badge-gold">🏅</div>
-                    <div class="badge badge-pink">🌸</div>
-                    <div class="badge badge-teal">⭐</div>
+                <!-- Achievement Section INSIDE Profile Card -->
+                <div class="achievement-section-inner">
+                    <div class="section-header">
+                        <h2>Achievement</h2>
+                    </div>
+                    
+                    <div class="achievement-container">
+                        <!-- Badges akan di-render oleh JavaScript -->
+                        <div class="achievement-badge locked">
+                            <div class="badge-icon-large">🔒</div>
+                            <div class="badge-label">Beginner</div>
+                            <div class="badge-progress">0 / 25 workouts</div>
+                        </div>
+                        <div class="achievement-badge locked">
+                            <div class="badge-icon-large">🔒</div>
+                            <div class="badge-label">Intermediate</div>
+                            <div class="badge-progress">0 / 50 workouts</div>
+                        </div>
+                        <div class="achievement-badge locked">
+                            <div class="badge-icon-large">🔒</div>
+                            <div class="badge-label">Advanced</div>
+                            <div class="badge-progress">0 / 100 workouts</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -167,7 +177,6 @@
                 <div class="logout-actions">
                     <button class="btn-cancel-logout" id="btnCancelLogout">Batal</button>
 
-                    <!-- Laravel logout route -->
                     <form id="logoutForm" method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button class="btn-confirm-logout" type="submit">Ya, Keluar</button>
@@ -215,64 +224,5 @@
     </footer>
 
     <script src="{{ asset('js/profile.js') }}"></script>
-    <script src="{{ asset('js/footer.js') }}"></script>
-
-    <!-- Achievement Section -->
-<div class="achievement-section">
-    <div class="section-header">
-        <h2>Achievement</h2>
-        <button class="btn-manage-badges" onclick="openBadgeModal()">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 5v14M5 12h14"/>
-            </svg>
-            Manage Badges
-        </button>
-    </div>
-    
-    <div class="achievement-container">
-        <!-- Badge akan muncul di sini -->
-        <div class="achievement-badge">
-            <div class="badge-icon-large">🏆</div>
-        </div>
-        <div class="achievement-badge">
-            <div class="badge-icon-large">⭐</div>
-        </div>
-        <div class="achievement-badge">
-            <div class="badge-icon-large">🎖️</div>
-        </div>
-    </div>
-</div>
-
-<!-- Badge Modal - Tambahkan sebelum </body> -->
-<div id="badgeModal" class="modal badge-modal">
-    <div class="modal-content badge-modal-content">
-        <div class="modal-header">
-            <h2>My Badge Collection</h2>
-            <button class="modal-close" onclick="closeBadgeModal()">&times;</button>
-        </div>
-        
-        <div class="modal-body">
-            <p class="badge-instruction">
-                Select up to 3 badges to display on your profile. 
-                Complete more workouts to unlock new badges!
-            </p>
-            
-            <div class="badge-category-tabs">
-                <button class="badge-tab active" onclick="filterBadgeCategory('all')">All Badges</button>
-                <button class="badge-tab" onclick="filterBadgeCategory('arms')">💪 Arms</button>
-                <button class="badge-tab" onclick="filterBadgeCategory('legs')">🦵 Legs</button>
-                <button class="badge-tab" onclick="filterBadgeCategory('abs')">🔥 Abs</button>
-            </div>
-            
-            <div id="badgeCollection" class="badge-collection"></div>
-        </div>
-        
-        <div class="modal-footer">
-            <button class="btn btn-secondary" onclick="closeBadgeModal()">Close</button>
-        </div>
-    </div>
-</div>
-
 </body>
 </html>
-
