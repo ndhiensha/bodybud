@@ -215,5 +215,80 @@
 
     <script src="{{ asset('js/profile.js') }}"></script>
     <script src="{{ asset('js/footer.js') }}"></script>
+
+    <!-- Tambahkan di bagian Achievement Section di profile page Anda -->
+
+<!-- Achievement Section (Update yang sudah ada) -->
+<div class="achievement-section">
+    <div class="section-header">
+        <h2>Achievement</h2>
+        <button class="btn-manage-badges" onclick="openBadgeModal()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12h14"/>
+            </svg>
+            Manage Badges
+        </button>
+    </div>
+    
+    <!-- Container untuk menampilkan badge yang dipilih (3 badge) -->
+    <div class="achievement-container">
+        <!-- Badge akan di-render oleh JavaScript -->
+        <div class="achievement-badge">
+            <div class="badge-icon-large">🏆</div>
+        </div>
+        <div class="achievement-badge">
+            <div class="badge-icon-large">⭐</div>
+        </div>
+        <div class="achievement-badge">
+            <div class="badge-icon-large">🎖️</div>
+        </div>
+    </div>
+</div>
+
+<!-- Badge Modal -->
+<div id="badgeModal" class="modal badge-modal">
+    <div class="modal-content badge-modal-content">
+        <div class="modal-header">
+            <h2>My Badge Collection</h2>
+            <button class="modal-close" onclick="closeBadgeModal()">&times;</button>
+        </div>
+        
+        <div class="modal-body">
+            <p class="badge-instruction">
+                Select up to 3 badges to display on your profile. 
+                Complete more workouts to unlock new badges!
+            </p>
+            
+            <!-- Category Tabs -->
+            <div class="badge-category-tabs">
+                <button class="badge-tab active" onclick="filterBadgeCategory('all')">
+                    All Badges
+                </button>
+                <button class="badge-tab" onclick="filterBadgeCategory('arms')">
+                    💪 Arms
+                </button>
+                <button class="badge-tab" onclick="filterBadgeCategory('legs')">
+                    🦵 Legs
+                </button>
+                <button class="badge-tab" onclick="filterBadgeCategory('abs')">
+                    🔥 Abs
+                </button>
+            </div>
+            
+            <!-- Badge Collection Container -->
+            <div id="badgeCollection" class="badge-collection">
+                <!-- Badges akan di-render oleh JavaScript -->
+            </div>
+        </div>
+        
+        <div class="modal-footer">
+            <button class="btn btn-secondary" onclick="closeBadgeModal()">Close</button>
+        </div>
+    </div>
+</div>
+
+<!-- Badge Unlock Notification (akan muncul otomatis saat unlock badge) -->
+<!-- Tidak perlu ditambahkan di HTML, akan dibuat oleh JavaScript -->
 </body>
 </html>
+
